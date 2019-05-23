@@ -12,7 +12,7 @@ export default class CourseEditor extends React.Component {
         this.courses = props.courses;
         this.state = {
             courseId: courseId,
-            course: this.courses.find(course => course.id == courseId)
+            course: this.courses.find(course => course.id === courseId)
         };
     }
 

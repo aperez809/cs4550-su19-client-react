@@ -3,11 +3,11 @@ import CourseCard from "./CourseCard";
 
 const CourseGrid = ({courses}) =>
     <div>
-        <h1>Course Grid</h1>;
+        <h1>Course Grid</h1>
         <div className="card-group">
             {
                 courses.map((course) =>
-                    <CourseCard course={course} title={course.title}/>)
+                    <CourseCard course={course} key={course.id} title={course.title}/>)
             }
         </div>
     </div>;

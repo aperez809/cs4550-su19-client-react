@@ -6,8 +6,8 @@ const CourseList = ({courses}) =>
         <h1>Course List</h1>
             <div className="list-group">
                 {
-                    courses.map(course =>
-                        <CourseListItem course={course}/>
+                    courses.map((course, key) =>
+                        <CourseListItem course={course} key={key}/>
                     )
                 }
 

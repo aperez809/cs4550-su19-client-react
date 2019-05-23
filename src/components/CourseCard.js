@@ -17,7 +17,9 @@ export default class CourseCard extends React.Component {
                         {this.props.course.title}
                     </h5>
                     <p className="card-text">Card text.</p>
-                    <a href={`/course-editor/${this.props.course.id}`} className="btn btn-primary">More...</a>
+                    <a href={`/course-editor/${this.props.course.id}`} className="btn btn-primary">
+                        More...
+                    </a>
                 </div>
             </div>
         )
