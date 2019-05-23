@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 export default class CourseCard extends React.Component {
 
@@ -17,9 +18,11 @@ export default class CourseCard extends React.Component {
                         {this.props.course.title}
                     </h5>
                     <p className="card-text">Card text.</p>
-                    <a href={`/course-editor/${this.props.course.id}`} className="btn btn-primary">
+                    <Link to={`/course-editor/${this.props.course.id}`}
+                          onClick={() => this.selectedCourse(this.state.course)}
+                          className="btn btn-primary">
                         More...
-                    </a>
+                    </Link>
                 </div>
             </div>
         )

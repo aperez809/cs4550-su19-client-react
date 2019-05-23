@@ -7,6 +7,17 @@ import CourseList from './CourseList'
 import courses from './courses.json';
 
 export default class Whiteboard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedCourse: courses[0]
+        }
+    }
+
+    selectCourse = course => this.setState({selectedCourse: course});
+
+
+
     render() {
         return (
             <Router>
@@ -18,9 +29,11 @@ export default class Whiteboard extends React.Component {
                     <Link to="/course-editor"><button className="btn btn-primary">Editor</button></Link>
 
                     <Route path="/course-list"
-                           render={() => <CourseList courses={courses}/>}/>
+                           render={() => <CourseList selectedCourse={this.selectedCourse}
+                                                     courses={courses}/>}/>
                     <Route path="/course-grid"
-                           render={() => <CourseGrid courses={courses}/>}/>
+                           render={() => <CourseGrid selectedCourse={this.selectedCourse}
+                                                     courses={courses}/>}/>
                     <Route path="/course-editor/:courseId"
                            render={() => <CourseEditor courses={courses}/>}/>
 

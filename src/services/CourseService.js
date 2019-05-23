@@ -1,36 +1,51 @@
 import courses from '../components/courses.json';
 
-const courseJson = courses;
+export default class CourseService {
 
-
-function createCourse(course) {
-    courseJson.push(course);
-    return courseJson;
-}
-
-
-function findAllCourses() {
-    return courseJson;
-}
-
-function findCourseById(id) {
-    const courseFound = courseJson.find(course => course.id === id);
-    if (courseFound == undefined) {
-        alert(`Course with ID of ${id} not found`);
-        return;
+    constructor() {
+        this.courseJson = courses;
     }
 
-    return courseFound;
+
+    function
+
+    createCourse(course) {
+        this.courseJson.push(course);
+        return this.courseJson;
+    }
+
+
+    function
+
+    findAllCourses() {
+        return this.courseJson;
+    }
+
+    function
+
+    findCourseById(id) {
+        const courseFound = this.courseJson.find(course => course.id === id);
+        if (courseFound == undefined) {
+            alert(`Course with ID of ${id} not found`);
+            return;
+        }
+
+        return courseFound;
+    }
+
+    function
+
+    updateCourse(id, course) {
+        this.courseJson.filter(c => c.id !== id);
+        return this.createCourse(course);
+    }
+
+
+    function
+
+    deleteCourse(id) {
+        this.courseJson.filter(c => c.id !== id);
+        return this.courseJson
+    }
+
 }
-
-function updateCourse(id, course) {
-    courseJson.filter(c => c.id !== id);
-    return createCourse(course);
-}
-
-
-function deleteCourse(id) {
-    courseJson.filter(c => c.id !== id);
-    return courseJson
-}
-
