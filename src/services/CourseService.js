@@ -24,10 +24,9 @@ function findCourseById(id) {
 }
 
 function updateCourse(course) {
-    return null;
+    courseJson.filter(c => c.id !== course.id);
+    courseJson.push(course);
+    return courseJson;
 }
 
-function deleteCourse(course) {
-    return null;
-}
 
