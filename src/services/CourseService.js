@@ -23,14 +23,13 @@ function findCourseById(id) {
     return courseFound;
 }
 
-function updateCourse(course) {
-    courseJson.filter(c => c.id !== course.id);
-    courseJson.push(course);
-    return courseJson;
+function updateCourse(id, course) {
+    courseJson.filter(c => c.id !== id);
+    return createCourse(course);
 }
 
 
-function deleteCourse(course) {
+function deleteCourse(id) {
     courseJson.filter(c => c.id !== course.id);
     return courseJson
 }
