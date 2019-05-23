@@ -10,7 +10,7 @@ function createCourse(course) {
 
 
 function findAllCourses() {
-    return null;
+    return courseJson;
 }
 
 function findCourseById(id) {
