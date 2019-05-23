@@ -29,10 +29,10 @@ export default class Whiteboard extends React.Component {
                     <Link to="/course-editor"><button className="btn btn-primary">Editor</button></Link>
 
                     <Route path="/course-list"
-                           render={() => <CourseList selectedCourse={this.selectedCourse}
+                           render={() => <CourseList selectedCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-grid"
-                           render={() => <CourseGrid selectedCourse={this.selectedCourse}
+                           render={() => <CourseGrid selectedCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-editor/:courseId"
                            render={() => <CourseEditor courses={courses}/>}/>

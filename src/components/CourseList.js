@@ -1,13 +1,13 @@
 import React from 'react';
 import CourseListItem from './CourseListItem';
 
-const CourseList = ({courses, selectedCourse}) =>
+const CourseList = ({courses, selectCourse}) =>
     <div>
         <h1>Course List</h1>
             <div className="list-group">
                 {
                     courses.map((course, key) =>
-                        <CourseListItem selectedCourse={selectedCourse}
+                        <CourseListItem selectedCourse={selectCourse}
                                         course={course}
                                         key={key}/>
                     )

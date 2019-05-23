@@ -19,7 +19,7 @@ export default class CourseCard extends React.Component {
                     </h5>
                     <p className="card-text">Card text.</p>
                     <Link to={`/course-editor/${this.props.course.id}`}
-                          onClick={() => this.selectedCourse(this.state.course)}
+                          onClick={() => this.selectCourse(this.state.course)}
                           className="btn btn-primary">
                         More...
                     </Link>

@@ -1,13 +1,13 @@
 import React from 'react';
 import CourseCard from "./CourseCard";
 
-const CourseGrid = ({courses, selectedCourse}) =>
+const CourseGrid = ({courses, selectCourse}) =>
     <div>
         <h1>Course Grid</h1>
         <div className="card-group">
             {
                 courses.map((course) =>
-                    <CourseCard selectedCourse={selectedCourse}
+                    <CourseCard selectedCourse={selectCourse}
                                 course={course}
                                 key={course.id}
                                 title={course.title}/>)
