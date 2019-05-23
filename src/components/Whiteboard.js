@@ -4,6 +4,7 @@ import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import CourseGrid from './CourseGrid'
 import CourseList from './CourseList'
+import courses from './courses.json';
 
 export default class Whiteboard extends React.Component {
     render() {
@@ -13,24 +14,24 @@ export default class Whiteboard extends React.Component {
                     <h1>Whiteboard</h1>
 
                     <Link to="/course-list"><button className="btn btn-primary">List</button></Link>
-                    <Link to="/course-grid">Grid</Link>
-                    <Link to="/course-editor">Editor</Link>
+                    <Link to="/course-grid"><button className="btn btn-primary">Grid</button></Link>
+                    <Link to="/course-editor"><button className="btn btn-primary">Editor</button></Link>
 
                     <Route path="/course-list"
-                           component={CourseList}/>
+                           render={() => <CourseList courses={courses}/>}/>
                     <Route path="/course-grid"
-                           component={CourseGrid}/>
+                           render={() => <CourseGrid courses={courses}/>}/>
                     <Route path="/course-editor"
-                           component={CourseEditor}/>
+                           render={() => <CourseEditor courses={courses}/>}/>
 
-                    <div className="card-group">
+                    {/*<div className="card-group">
                         <CourseCard title="CS5200"/>
                         <CourseCard title="CS4550"/>
                         <CourseCard title="CS3200"/>
                         <CourseCard title="CS3500"/>
                         <CourseCard title="CS2500"/>
 
-                    </div>
+                    </div>*/}
 
                 </div>
             </Router>
