@@ -14,7 +14,13 @@ function findAllCourses() {
 }
 
 function findCourseById(id) {
-    return null;
+    const courseFound = courseJson.find(course => course.id === id);
+    if (courseFound == undefined) {
+        alert(`Course with ID of ${id} not found`);
+        return;
+    }
+
+    return courseFound;
 }
 
 function updateCourse(course) {
