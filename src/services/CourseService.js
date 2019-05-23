@@ -30,7 +30,7 @@ function updateCourse(id, course) {
 
 
 function deleteCourse(id) {
-    courseJson.filter(c => c.id !== course.id);
+    courseJson.filter(c => c.id !== id);
     return courseJson
 }
 
