@@ -2,25 +2,17 @@ import React from 'react';
 import ModuleItem from "./ModuleItem";
 
 export default class ModuleList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         //special variable used by React. Name MUST be state if it is included
         this.state = {
             module: {
-                title: "New Module",
-                id: -1
+                id: -1,
+                title: "New Module"
             },
 
-            modules: [
-                {id: 123, title: "HTML"},
-                {id: 234, title: "CSS"},
-                {id: 345, title: "JavaScript"},
-                {id: 456, title: "React.js"},
-                {id: 567, title: "Angular.js"},
-                {id: 678, title: "React Native"},
-                {id: 789, title: "MongoDB"}
-            ]
+            modules: this.props.modules
         }
     }
 
