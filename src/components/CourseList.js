@@ -7,7 +7,7 @@ const CourseList = ({courses, selectCourse}) =>
             <div className="list-group">
                 {
                     courses.map((course, key) =>
-                        <CourseListItem selectedCourse={selectCourse}
+                        <CourseListItem selectCourse={selectCourse}
                                         course={course}
                                         key={key}/>
                     )

@@ -12,7 +12,7 @@ const CourseCard = ({selectCourse, course}) =>
             </h5>
             <p className="card-text">Card text.</p>
             <Link to={`/course-editor/${course.id}`}
-                  onClick={() => this.selectCourse(course)}
+                  onClick={() => selectCourse(course)}
                   className="btn btn-primary">
                 More...
             </Link>

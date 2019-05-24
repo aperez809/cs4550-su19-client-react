@@ -10,10 +10,10 @@ export default class CourseEditor extends React.Component {
         const paths = pathName.split("/");
         const courseId = paths[2];
         this.courses = props.courses;
+        this.course = this.courses.find(course => course.id === courseId);
         this.state = {
             courseId: courseId,
-            course: this.courses.find(course => course.id === courseId),
-            selectedModule: this.props.selectedCourse.modules[0]
+            selectedModule: this.props.course.modules[0]
 
         };
     }
@@ -25,15 +25,32 @@ export default class CourseEditor extends React.Component {
             selectedTopic : module.lessons[0].topics[0]
         });
 
+    createModule = () => {
+
+        //Special API used for resetting the state in some way: In this case, prepending an item
+        //to the module list.
+        this.state.module.id = new Date().getTime();
+        this.setState({
+            module: {
+                id: new Date().getTime()
+            },
+
+            //prepends this.state.module. Arguments could be reversed in order to append to end.
+            modules: [this.state.module, ...this.state.modules]
+        });
+    };
+
     render() {
         return (
             <div>
 
-                <h2>{this.state.course.title}</h2>
+                <h2>{this.course.title}</h2>
                 <div className="row">
                     <div className="col-4 left">
-                        <ModuleList selectModule={this.selectModule}
-                                    modules={this.props.selectedCourse.modules}/>
+                        <ModuleList deleteModule={this.deleteModule}
+                                    createModule={this.createModule}
+                                    selectModule={this.selectModule}
+                                    modules={this.props.course.modules}/>
                     </div>
 
                     <div className="col-8 right">

@@ -71,12 +71,13 @@ export default class ModuleList extends React.Component {
                     dynamically render rows in the XML*/}
                     {
                         this.state.modules.map(
-                            (currModule) => <ModuleItem
+                            ((currModule, key) => <ModuleItem
                                                 module={currModule}
                                                 selectModule={this.props.selectModule}
                                                 deleteModule={this.deleteModule}
-                                                key={currModule.id}
+                                                key={key}
                                                 title={currModule.title}/>
+                            )
                         )
                     }
                 </ul>

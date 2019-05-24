@@ -1,5 +1,4 @@
 import React from "react";
-import CourseCard from './CourseCard';
 import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import CourseGrid from './CourseGrid'
@@ -22,7 +21,6 @@ export default class Whiteboard extends React.Component {
 
     selectCourse = course => {
         this.setState({selectedCourse: course});
-        console.log(course);
     };
 
 
@@ -38,13 +36,13 @@ export default class Whiteboard extends React.Component {
                     <Link to="/course-editor"><button className="btn btn-primary">Editor</button></Link>
 
                     <Route path="/course-list"
-                           render={() => <CourseList selectedCourse={this.selectCourse}
+                           render={() => <CourseList selectCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-grid"
-                           render={() => <CourseGrid selectedCourse={this.selectCourse}
+                           render={() => <CourseGrid selectCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-editor/:courseId"
-                           render={() => <CourseEditor selectedCourse={this.state.selectedCourse}
+                           render={() => <CourseEditor selectCourse={this.selectCourse}
                                                        courses={courses}/>}/>
                 </div>
             </Router>

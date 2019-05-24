@@ -4,12 +4,12 @@ import CourseCard from "./CourseCard";
 const CourseGrid = ({courses, selectCourse}) =>
     <div>
         <h1>Course Grid</h1>
-        <div className="card-group">
+        <div className="card-deck">
             {
-                courses.map((course) =>
-                    <CourseCard selectedCourse={selectCourse}
+                courses.map((course, key) =>
+                    <CourseCard selectCourse={selectCourse}
                                 course={course}
-                                key={course.id}
+                                key={key}
                                 title={course.title}/>)
             }
         </div>
