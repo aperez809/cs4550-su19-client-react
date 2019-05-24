@@ -20,7 +20,6 @@ export default class ModuleList extends React.Component {
 
         //Special API used for resetting the state in some way: In this case, prepending an item
         //to the module list.
-        this.state.module.id = new Date().getTime();
         this.setState({
             module: {
                 id: new Date().getTime()

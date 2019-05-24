@@ -43,7 +43,7 @@ export default class CourseService {
     }
 
     deleteCourse(id) {
-        this.courseJson.filter(c => c.id !== id);
-        return this.courseJson
+        this.courseJson = this.courseJson.filter(c => c.id !== id);
+        return this.courseJson;
     }
 }

@@ -7,7 +7,7 @@ import CourseService from '../services/CourseService';
 
 let courseService =
     CourseService.getInstance();
-const courses =
+var courses =
     courseService.findAllCourses();
 
 
@@ -15,7 +15,8 @@ export default class Whiteboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedCourse: courses[0]
+            selectedCourse: courses[0],
+            courses: courses
         }
     }
 
@@ -24,7 +25,9 @@ export default class Whiteboard extends React.Component {
     };
 
     deleteCourse = id => {
-        courseService.deleteCourse(id)
+        this.setState({
+            courses: courseService.deleteCourse(id)
+        });
     };
 
 
@@ -42,13 +45,13 @@ export default class Whiteboard extends React.Component {
                     <Route path="/course-list"
                            render={() => <CourseList deleteCourse={this.deleteCourse}
                                                      selectCourse={this.selectCourse}
-                                                     courses={courses}/>}/>
+                                                     courses={this.state.courses}/>}/>
                     <Route path="/course-grid"
                            render={() => <CourseGrid selectCourse={this.selectCourse}
-                                                     courses={courses}/>}/>
+                                                     courses={this.state.courses}/>}/>
                     <Route path="/course-editor/:courseId"
                            render={() => <CourseEditor selectCourse={this.selectCourse}
-                                                       courses={courses}/>}/>
+                                                       courses={this.state.courses}/>}/>
                 </div>
             </Router>
         )
