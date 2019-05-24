@@ -20,6 +20,7 @@ export default class CourseService {
     createCourse(course) {
         this.courseJson.push(course);
         return this.courseJson;
+
     }
 
 
@@ -38,7 +39,7 @@ export default class CourseService {
     }
 
     updateCourse(id, course) {
-        this.courseJson.filter(c => c.id !== id);
+        this.courseJson = this.courseJson.filter(c => c.id !== id);
         return this.createCourse(course);
     }
 

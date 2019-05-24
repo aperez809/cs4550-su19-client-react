@@ -22,7 +22,8 @@ export default class ModuleList extends React.Component {
         //to the module list.
         this.setState({
             module: {
-                id: new Date().getTime()
+                id: new Date().getTime(),
+                lessons: []
             },
 
             //prepends this.state.module. Arguments could be reversed in order to append to end.

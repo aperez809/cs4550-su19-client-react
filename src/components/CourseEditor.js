@@ -11,7 +11,6 @@ export default class CourseEditor extends React.Component {
         const courseId = paths[2];
         this.courses = props.courses;
         this.course = this.courses.find(course => course.id === courseId);
-        console.log(this.course);
         this.state = {
             courseId: courseId,
             course: this.course,

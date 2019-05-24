@@ -67,7 +67,31 @@
   },
   {
     "id": "345",
-    "title": "CS3200",
+    "title": "CS3700",
+    "modules": []
+
+  },
+  {
+    "id": "456",
+    "title": "CS4100",
+    "modules": []
+
+  },
+  {
+    "id": "567",
+    "title": "CS3000",
+    "modules": []
+
+  },
+  {
+    "id": "678",
+    "title": "CS1800",
+    "modules": []
+
+  },
+  {
+    "id": "789",
+    "title": "CS3500",
     "modules": []
 
   }

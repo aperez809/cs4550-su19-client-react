@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Whiteboard from "./components/Whiteboard.js";
 
 ReactDOM.render(
-    <div className="container-fluid">
+    <div>
         <Whiteboard/>
     </div>,
     document.getElementById('root')

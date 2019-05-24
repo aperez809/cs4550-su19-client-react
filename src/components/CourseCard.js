@@ -10,7 +10,13 @@ const CourseCard = ({selectCourse, course}) =>
             <h5 className="card-title">
                 {course.title}
             </h5>
-            <p className="card-text">Card text.</p>
+            <p className="card-text">{
+                `Last Modified:
+                ${new Date().getMonth()}
+                -
+                ${new Date().getDate()}
+                -
+                ${new Date().getFullYear()}`}</p>
             <Link to={`/course-editor/${course.id}`}
                   onClick={() => selectCourse(course)}
                   className="btn btn-primary">
