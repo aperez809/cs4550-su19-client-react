@@ -1,8 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import CourseService from '../services/CourseService';
 
-const CourseListItem = ({course, selectCourse}) =>
+const CourseRow = ({course, selectCourse}) =>
     <div className="list-group-item">
         <Link to={`/course-editor/${course.id}`}>
             {course.title}
@@ -13,4 +12,4 @@ const CourseListItem = ({course, selectCourse}) =>
         </button>
     </div>;
 
-export default CourseListItem;
+export default CourseRow;

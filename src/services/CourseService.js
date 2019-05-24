@@ -1,13 +1,21 @@
 import courses from '../components/courses.json';
 
 export default class CourseService {
+    static myInstance = null;
 
     constructor() {
         this.courseJson = courses;
     }
 
 
-    function
+    static getInstance() {
+        if (CourseService.myInstance == null) {
+            CourseService.myInstance =
+                new CourseService();
+        }
+        return this.myInstance;
+    }
+
 
     createCourse(course) {
         this.courseJson.push(course);
@@ -15,13 +23,9 @@ export default class CourseService {
     }
 
 
-    function
-
     findAllCourses() {
         return this.courseJson;
     }
-
-    function
 
     findCourseById(id) {
         const courseFound = this.courseJson.find(course => course.id === id);
@@ -33,19 +37,13 @@ export default class CourseService {
         return courseFound;
     }
 
-    function
-
     updateCourse(id, course) {
         this.courseJson.filter(c => c.id !== id);
         return this.createCourse(course);
     }
 
-
-    function
-
     deleteCourse(id) {
         this.courseJson.filter(c => c.id !== id);
         return this.courseJson
     }
-
 }

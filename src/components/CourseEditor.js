@@ -12,9 +12,18 @@ export default class CourseEditor extends React.Component {
         this.courses = props.courses;
         this.state = {
             courseId: courseId,
-            course: this.courses.find(course => course.id === courseId)
+            course: this.courses.find(course => course.id === courseId),
+            selectedModule: this.props.selectedCourse.modules[0]
+
         };
     }
+
+    selectModule = module =>
+        this.setState({
+            selectedModule: module,
+            selectedLesson: module.lessons[0],
+            selectedTopic : module.lessons[0].topics[0]
+        });
 
     render() {
         return (
@@ -23,7 +32,8 @@ export default class CourseEditor extends React.Component {
                 <h2>{this.state.course.title}</h2>
                 <div className="row">
                     <div className="col-4 left">
-                        <ModuleList modules={this.state.course.modules}/>
+                        <ModuleList selectModule={this.selectModule}
+                                    modules={this.props.selectedCourse.modules}/>
                     </div>
 
                     <div className="col-8 right">

@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseListItem from './CourseListItem';
+import CourseListItem from './CourseRow';
 
 const CourseList = ({courses, selectCourse}) =>
     <div>

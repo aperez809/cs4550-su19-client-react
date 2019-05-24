@@ -4,7 +4,13 @@ import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import CourseGrid from './CourseGrid'
 import CourseList from './CourseList'
-import courses from './courses.json';
+import CourseService from '../services/CourseService';
+
+let courseService =
+    CourseService.getInstance();
+const courses =
+    courseService.findAllCourses();
+
 
 export default class Whiteboard extends React.Component {
     constructor(props) {
@@ -35,17 +41,8 @@ export default class Whiteboard extends React.Component {
                            render={() => <CourseGrid selectedCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-editor/:courseId"
-                           render={() => <CourseEditor courses={courses}/>}/>
-
-                    {/*<div className="card-group">
-                        <CourseCard title="CS5200"/>
-                        <CourseCard title="CS4550"/>
-                        <CourseCard title="CS3200"/>
-                        <CourseCard title="CS3500"/>
-                        <CourseCard title="CS2500"/>
-
-                    </div>*/}
-
+                           render={() => <CourseEditor selectedCourse={this.state.selectedCourse}
+                                                       courses={courses}/>}/>
                 </div>
             </Router>
         )

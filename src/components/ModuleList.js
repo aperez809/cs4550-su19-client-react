@@ -71,6 +71,7 @@ export default class ModuleList extends React.Component {
                         this.state.modules.map(
                             currModule => <ModuleItem
                                                 module={currModule}
+                                                selectModule={this.props.selectModule}
                                                 deleteModule={this.deleteModule}
                                                 key={currModule.id}
                                                 title={currModule.title}/>
