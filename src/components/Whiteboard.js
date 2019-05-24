@@ -20,7 +20,10 @@ export default class Whiteboard extends React.Component {
         }
     }
 
-    selectCourse = course => this.setState({selectedCourse: course});
+    selectCourse = course => {
+        this.setState({selectedCourse: course});
+        console.log(course);
+    };
 
 
 

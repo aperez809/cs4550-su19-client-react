@@ -20,6 +20,7 @@ export default class ModuleList extends React.Component {
 
         //Special API used for resetting the state in some way: In this case, prepending an item
         //to the module list.
+        this.state.module.id = new Date().getTime();
         this.setState({
             module: {
                 id: new Date().getTime()
@@ -33,7 +34,8 @@ export default class ModuleList extends React.Component {
     titleChanged = (event) => {
         this.setState({
             module: {
-                title: event.target.value
+                title: event.target.value,
+                id: new Date().getTime()
             }
         });
     };
@@ -54,11 +56,11 @@ export default class ModuleList extends React.Component {
                 <ul className="list-group">
                     <li className="list-group-item">
                         <input className="form-control"
-                               placeholder={this.state.module.title}
+                               onChange={this.titleChanged}
+                               defaultValue={this.state.module.title}
                                />
                         <button
                             onClick={this.createModule}
-                            onChange={this.titleChanged}
                             className="btn btn-primary btn-block">
                             Create Module
                         </button>
@@ -69,7 +71,7 @@ export default class ModuleList extends React.Component {
                     dynamically render rows in the XML*/}
                     {
                         this.state.modules.map(
-                            currModule => <ModuleItem
+                            (currModule) => <ModuleItem
                                                 module={currModule}
                                                 selectModule={this.props.selectModule}
                                                 deleteModule={this.deleteModule}
