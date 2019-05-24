@@ -11,10 +11,11 @@ export default class CourseEditor extends React.Component {
         const courseId = paths[2];
         this.courses = props.courses;
         this.course = this.courses.find(course => course.id === courseId);
+        console.log(this.course);
         this.state = {
             courseId: courseId,
-            selectedModule: this.props.course.modules[0]
-
+            course: this.course,
+            selectedModule: this.course.modules[0]
         };
     }
 
@@ -50,7 +51,7 @@ export default class CourseEditor extends React.Component {
                         <ModuleList deleteModule={this.deleteModule}
                                     createModule={this.createModule}
                                     selectModule={this.selectModule}
-                                    modules={this.props.course.modules}/>
+                                    modules={this.course.modules}/>
                     </div>
 
                     <div className="col-8 right">

@@ -23,6 +23,10 @@ export default class Whiteboard extends React.Component {
         this.setState({selectedCourse: course});
     };
 
+    deleteCourse = id => {
+        courseService.deleteCourse(id)
+    };
+
 
 
     render() {
@@ -36,7 +40,8 @@ export default class Whiteboard extends React.Component {
                     <Link to="/course-editor"><button className="btn btn-primary">Editor</button></Link>
 
                     <Route path="/course-list"
-                           render={() => <CourseList selectCourse={this.selectCourse}
+                           render={() => <CourseList deleteCourse={this.deleteCourse}
+                                                     selectCourse={this.selectCourse}
                                                      courses={courses}/>}/>
                     <Route path="/course-grid"
                            render={() => <CourseGrid selectCourse={this.selectCourse}
