@@ -21,8 +21,8 @@ export default class CourseEditor extends React.Component {
     selectModule = module =>
         this.setState({
             selectedModule: module,
-            selectedLesson: module.lessons[0],
-            selectedTopic : module.lessons[0].topics[0]
+            //selectedLesson: module.lessons[0],
+            //selectedTopic : module.lessons[0].topics[0]
         });
 
     createModule = () => {

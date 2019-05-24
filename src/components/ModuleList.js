@@ -9,21 +9,19 @@ export default class ModuleList extends React.Component {
         this.state = {
             module: {
                 id: -1,
-                title: "New Module"
+                title: "New Module",
+                lessons: []
             },
-
             modules: this.props.modules
         }
     }
 
     createModule = () => {
-
         //Special API used for resetting the state in some way: In this case, prepending an item
         //to the module list.
         this.setState({
             module: {
                 id: new Date().getTime(),
-                lessons: []
             },
 
             //prepends this.state.module. Arguments could be reversed in order to append to end.
@@ -35,7 +33,6 @@ export default class ModuleList extends React.Component {
         this.setState({
             module: {
                 title: event.target.value,
-                id: new Date().getTime()
             }
         });
     };
