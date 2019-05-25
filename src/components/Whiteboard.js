@@ -32,7 +32,7 @@ export default class Whiteboard extends React.Component {
 
     createCourse = event => {
         event.preventDefault();
-        console.log(event.target);
+        console.log(event.currentTarget.parent);
         this.setState({
             courses: courseService.createCourse(
                 {
@@ -71,9 +71,9 @@ export default class Whiteboard extends React.Component {
                         <Link to="/course-grid">
                             <button className="btn btn-primary">Grid</button>
                         </Link>
-                        <Link to="/course-editor">
+                        {/*<Link to="/course-editor">
                             <button className="btn btn-primary">Editor</button>
-                        </Link>
+                        </Link>*/}
 
                         <Route path="/course-list"
                                render={() => <CourseList deleteCourse={this.deleteCourse}

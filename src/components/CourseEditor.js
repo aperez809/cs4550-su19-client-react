@@ -22,11 +22,30 @@ export default class CourseEditor extends React.Component {
     }
 
     selectModule = module => {
-        this.setState({
-            selectedModule: module,
-            selectedLesson: module.lessons[0],
-            selectedTopic : module.lessons[0].topics[0]
-        });
+        if (module.lessons.length > 0) {
+            this.setState({
+                selectedModule: module,
+                selectedLesson: module.lessons[0],
+                selectedTopic : module.lessons[0].topics[0]
+            });
+        }
+
+        else {
+            this.setState({
+                selectedModule: module,
+                selectedLesson: {
+                    "title": "",
+                    "topics": [{
+                        "title": "",
+                        "widgets": []
+                    }]
+                },
+                selectedTopic : {
+                    "title": "",
+                    "widgets": []},
+            });
+        }
+
 
     };
 
@@ -44,6 +63,13 @@ export default class CourseEditor extends React.Component {
         });
     };
 
+    editModule = (module) => {
+        module.title =
+        this.setState({
+            selectedModule: module
+        })
+    };
+
     render() {
         return (
             <div>
@@ -54,6 +80,8 @@ export default class CourseEditor extends React.Component {
                         <ModuleList deleteModule={this.deleteModule}
                                     createModule={this.createModule}
                                     selectModule={this.selectModule}
+                                    editModule={this.editModule}
+                                    selectedModule={this.state.selectedModule}
                                     modules={this.course.modules}/>
                     </div>
 
@@ -65,11 +93,39 @@ export default class CourseEditor extends React.Component {
                                         currLesson => <LessonTabItem lesson={currLesson}/>
                                     )
                                 }
+                                <li>
+                                    <input className="form-control"
+                                           onChange={this.titleChanged}
+                                           placeholder="New Lesson"
+                                    />
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={this.createModule}
+                                        className="ml-1 btn btn-primary float-right">
+                                        Create Lesson
+                                    </button>
+                                </li>
                             </ul>
                         </div>
-                            <ul className="nav nav-pills">
+                        <div className="mt-2">
+                        <ul className="nav nav-pills">
                                 <Topics topic={this.state.selectedTopic}/>
+                                <li>
+                                    <input className="form-control"
+                                           onChange={this.titleChanged}
+                                           placeholder="New Topic"
+                                    />
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={this.createModule}
+                                        className="ml-1 btn btn-primary float-right">
+                                        Create Topic
+                                    </button>
+                                </li>
                             </ul>
+                        </div>
                         </div>
                     </div>
                 </div>

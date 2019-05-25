@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ModuleItem = ({module, deleteModule, selectModule}) =>
-
-    <li className="list-group-item"
-        onClick={() => selectModule(module)}>
+const ModuleItem = ({module, deleteModule, selectModule, editModule, selectedModule}) =>
+    <li onClick={() => selectModule(module)}
+        className={module === selectedModule ? "list-group-item active": "list-group-item"}>
         {module.title}
-        <button className="btn btn-danger float-right"
+        <button className="ml-1 btn btn-danger float-right"
                 onClick={() => deleteModule(module.id)}>Delete</button>
+        <button className="btn btn-warning float-right"
+                onClick={() => editModule(module.id)}>Edit</button>
     </li>;
 
 export default ModuleItem;
