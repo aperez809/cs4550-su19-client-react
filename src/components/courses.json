@@ -57,7 +57,9 @@
         "id": "123-2",
         "title": "Week 2",
         "lessons": [{
-          "topics": []
+          "topics": [
+
+          ]
         }]
       }
     ]

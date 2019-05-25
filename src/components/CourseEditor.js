@@ -1,6 +1,6 @@
 import React from 'react';
 import ModuleList from "./ModuleList";
-import LessonTabs from "./LessonTabs";
+
 import Topics from "./Topics";
 import LessonTabItem from './LessonTabItem';
 
@@ -15,7 +15,9 @@ export default class CourseEditor extends React.Component {
         this.state = {
             courseId: courseId,
             course: this.course,
-            selectedModule: this.course.modules[0]
+            selectedModule: this.course.modules[0],
+            selectedLesson: this.course.modules[0].lessons[0],
+            selectedTopic : this.course.modules[0].lessons[0].topics[0]
         };
     }
 
@@ -25,7 +27,7 @@ export default class CourseEditor extends React.Component {
             selectedLesson: module.lessons[0],
             selectedTopic : module.lessons[0].topics[0]
         });
-        console.log(this.state.selectedModule.lessons);
+
     };
 
     createModule = () => {
@@ -57,17 +59,20 @@ export default class CourseEditor extends React.Component {
 
                     <div className="col-8 right">
                         <div className="container-fluid row">
+                            <ul className="nav nav-tabs">
                                 {
                                     this.state.selectedModule.lessons.map(
                                         currLesson => <LessonTabItem lesson={currLesson}/>
                                     )
                                 }
+                            </ul>
                         </div>
-                        <br/>
-                        <Topics/>
+                            <ul className="nav nav-pills">
+                                <Topics topic={this.state.selectedTopic}/>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
         )
     }
 }
