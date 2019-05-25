@@ -56,44 +56,71 @@
       {
         "id": "123-2",
         "title": "Week 2",
-        "lessons": []
+        "lessons": [{
+          "topics": []
+        }]
       }
     ]
   },
   {
     "id": "234",
     "title": "CS5200",
-    "modules": []
+    "modules": [
+      {"lessons": {
+      "topics": []
+    }}]
   },
   {
     "id": "345",
     "title": "CS3700",
-    "modules": []
+    "modules": [
+      {
+        "id": "345-1",
+        "title": "fdsjkgdnjk",
+        "lessons": {
+          "title": "rwriuerfjwnkdsa",
+          "topics": []
+      }}
+    ]
 
   },
   {
     "id": "456",
     "title": "CS4100",
-    "modules": []
+    "modules": [
+      {"lessons": {
+      "topics": []
+    }}]
 
   },
   {
     "id": "567",
     "title": "CS3000",
-    "modules": []
+    "modules": [
+      {"lessons": {
+      "topics": []
+    }}]
 
   },
   {
     "id": "678",
     "title": "CS1800",
-    "modules": []
+    "modules": [
+      {"lessons": {
+      "topics": []
+    }}]
 
   },
   {
     "id": "789",
     "title": "CS3500",
-    "modules": []
-
+    "modules": [
+      {"lessons": [
+        {
+          "topics": []
+        }]
+      }
+    ]
   }
 
 ]

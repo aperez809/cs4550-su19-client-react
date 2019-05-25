@@ -10,7 +10,23 @@ export default class ModuleList extends React.Component {
             module: {
                 id: -1,
                 title: "New Module",
-                lessons: []
+                lessons: [
+                    {
+                        "title": "fgjkjklflf",
+                        "topics": [
+                            {
+                                "title": "fdsjaigr",
+                                "widgets": [
+                                    {
+                                        "type": "HEADING",
+                                        "size": 1,
+                                        "text": "eihuiwfrw"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             modules: this.props.modules
         }

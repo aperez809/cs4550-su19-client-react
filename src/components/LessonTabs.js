@@ -1,13 +1,15 @@
 import React from 'react';
+import LessonTabItem from './LessonTabItem';
 
-export default class LessonTabs extends React.Component {
-    render () {
-        return (
-            <div>
-                <ul className="nav nav-tabs">
+const LessonTabs = ({lessons}) =>
+    <div>
+        <ul className="nav nav-tabs">
+            <li className="nav-item">
+            {lessons.map(
+                currLesson => <LessonTabItem/>
+            )}
+            </li>
+        </ul>
+    </div>;
 
-                </ul>
-            </div>
-        )
-    }
-}
+export default LessonTabs;

@@ -2,6 +2,7 @@ import React from 'react';
 import ModuleList from "./ModuleList";
 import LessonTabs from "./LessonTabs";
 import Topics from "./Topics";
+import LessonTabItem from './LessonTabItem';
 
 export default class CourseEditor extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class CourseEditor extends React.Component {
         const paths = pathName.split("/");
         const courseId = paths[2];
         this.courses = props.courses;
-        this.course = this.courses.find(course => course.id === courseId);
+        this.course = this.courses.find(course => course.id == courseId);
         this.state = {
             courseId: courseId,
             course: this.course,
@@ -18,18 +19,19 @@ export default class CourseEditor extends React.Component {
         };
     }
 
-    selectModule = module =>
+    selectModule = module => {
         this.setState({
             selectedModule: module,
-            //selectedLesson: module.lessons[0],
-            //selectedTopic : module.lessons[0].topics[0]
+            selectedLesson: module.lessons[0],
+            selectedTopic : module.lessons[0].topics[0]
         });
+        console.log(this.state.selectedModule.lessons);
+    };
 
     createModule = () => {
 
         //Special API used for resetting the state in some way: In this case, prepending an item
         //to the module list.
-        this.state.module.id = new Date().getTime();
         this.setState({
             module: {
                 id: new Date().getTime()
@@ -54,11 +56,16 @@ export default class CourseEditor extends React.Component {
                     </div>
 
                     <div className="col-8 right">
-                        <LessonTabs/>
+                        <div className="container-fluid row">
+                                {
+                                    this.state.selectedModule.lessons.map(
+                                        currLesson => <LessonTabItem lesson={currLesson}/>
+                                    )
+                                }
+                        </div>
                         <br/>
                         <Topics/>
                     </div>
-
                 </div>
             </div>
         )
