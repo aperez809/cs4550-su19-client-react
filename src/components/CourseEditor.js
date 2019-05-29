@@ -59,7 +59,7 @@ export default class CourseEditor extends React.Component {
             },
 
             //prepends this.state.module. Arguments could be reversed in order to append to end.
-            modules: [this.state.module, ...this.state.modules]
+            modules: [this.state.modules, ...this.state.module]
         });
     };
 
