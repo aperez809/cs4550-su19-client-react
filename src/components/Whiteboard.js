@@ -2,7 +2,7 @@ import React from "react";
 import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import CourseGrid from './CourseGrid'
-import CourseList from './CourseList'
+import CourseList from './CourseTable'
 import CourseService from '../services/CourseService';
 
 let courseService =
