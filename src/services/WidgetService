@@ -2,7 +2,7 @@ export default class WidgetService {
     static myInstance = null;
 
     constructor() {
-        this.url = "localhost:3000/api/";
+        this.url = "localhost:3000/api/widgets/";
     }
 
 
@@ -16,10 +16,7 @@ export default class WidgetService {
 
 
     createWidget(widget) {
-        //TODO: Implement POST request
-        const createUrl = this.url + "create/";
-
-        return fetch(createUrl, {
+        return fetch(this.url, {
             method: 'POST',
             body: JSON.stringify(widget),
             headers: {
@@ -32,18 +29,17 @@ export default class WidgetService {
 
 
     findAllWidgets() {
-        //TODO: Implement GET request
-        return this.widgetJson;
+        return fetch(this.url).then(function (response) {
+            return response.json();
+        });
     }
 
     findWidgetById(id) {
-        const widgetFound = this.findAllWidgets().find(widget => widget.id === id);
-        if (widgetFound == undefined) {
-            alert(`Widget with ID of ${id} not found`);
-            return;
-        }
+        const findUrl = this.url + id;
 
-        return widgetFound;
+        return fetch(findUrl).then(function (response) {
+            return response.json();
+        });
     }
 
     updateWidget(id, widget) {
