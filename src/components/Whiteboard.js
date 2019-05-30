@@ -16,7 +16,11 @@ export default class Whiteboard extends React.Component {
         super(props);
         this.state = {
             selectedCourse: courses[0],
-            courses: courses
+            courses: courses,
+            courseInProgress: {
+                id: new Date().getTime(),
+                title: ""
+            }
         }
     }
 
@@ -32,14 +36,27 @@ export default class Whiteboard extends React.Component {
 
     createCourse = event => {
         event.preventDefault();
-        console.log(event.currentTarget.parent);
+        console.log(event.target.value);
         this.setState({
             courses: courseService.createCourse(
                 {
                     id: new Date().getTime(),
                     title: event.target.value,
                     modules: []
-                })
+                }),
+            courseInProgress: {
+                id: new Date().getTime(),
+                title: ""
+            }
+        });
+    };
+
+    courseTitleChanged = (event) => {
+        console.log(event.target.value);
+        this.setState({
+            courseInProgress: {
+                title: event.target.value,
+            }
         });
     };
 
@@ -56,7 +73,10 @@ export default class Whiteboard extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarNav">
                             <form className="form-inline">
                             <input className="form-control mr-sm-2" placeholder="New Course Title" aria-label="New Course"/>
-                            <button onClick={this.createCourse} className="btn btn-outline-success my-2 my-sm-0">Create</button>
+                            <button onChange={this.courseTitleChanged}
+                                    onClick={this.createCourse}
+                                    value={this.state.courseInProgress.title}
+                                    className="btn btn-outline-success my-2 my-sm-0">Create</button>
                         </form>
                     </div>
                 </nav>
