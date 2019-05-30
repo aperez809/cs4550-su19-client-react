@@ -57,8 +57,11 @@ export default class WidgetService {
     }
 
     deleteWidget(id) {
-        //TODO: Implement DELETE request
-        this.widgetJson = this.widgetJson.filter(c => c.id !== id);
-        return this.widgetJson;
+        const deleteUrl = this.url + id;
+        return fetch(deleteUrl, {
+            method: "delete"
+        }).then(function (response) {
+            return response.json();
+        });
     }
 }
