@@ -56,73 +56,160 @@
       {
         "id": "123-2",
         "title": "Week 2",
-        "lessons": [{
-          "topics": [
-
-          ]
-        }]
+        "lessons": [
+          {
+            "title": "CSS",
+            "topics": [
+              {
+                "title": "Styling",
+                "widgets": [
+                  {
+                    "type": "HEADING",
+                    "size": 1,
+                    "text": "Styling HTML"
+                  },
+                  {
+                    "type": "PARAGRAPH",
+                    "text": "This topic introduces CSS"
+                  },
+                  {
+                    "type": "LIST",
+                    "items": "Bootstrap, Fontawesome, etc."
+                  },
+                  {
+                    "type": "IMAGE",
+                    "src": "https://picsum.photos/200"
+                  },
+                  {
+                    "type": "LINK",
+                    "title": "CSS Wiki",
+                    "href": "https://en.wikipedia.org/wiki/CSS"
+                  }
+                ]
+              },
+              {
+                "title": "Tags",
+                "widgets": []
+              },
+              {
+                "title": "Attributes",
+                "widgets": []
+              }
+            ]
+          },
+          {
+            "title": "CSS",
+            "topics": []
+          }
+        ]
       }
     ]
   },
   {
     "id": "234",
-    "title": "CS5200",
-    "modules": [
-      {"lessons": {
-      "topics": []
-    }}]
-  },
-  {
-    "id": "345",
-    "title": "CS3700",
+    "title": "CS3200",
     "modules": [
       {
-        "id": "345-1",
-        "title": "fdsjkgdnjk",
-        "lessons": {
-          "title": "rwriuerfjwnkdsa",
-          "topics": []
-      }}
-    ]
+        "id": "234-1",
+        "title": "Week 1",
+        "lessons": [
+          {
+            "title": "Relational DBs",
+            "topics": [
+              {
+                "title": "Relational Algebra",
+                "widgets": [
+                  {
+                    "type": "HEADING",
+                    "size": 1,
+                    "text": "RA Operations"
+                  },
+                  {
+                    "type": "PARAGRAPH",
+                    "text": "This topic introduces RA"
+                  },
+                  {
+                    "type": "LIST",
+                    "items": "UNION, DIFFERENCE, XOR"
+                  },
+                  {
+                    "type": "IMAGE",
+                    "src": "https://picsum.photos/200"
+                  },
+                  {
+                    "type": "LINK",
+                    "title": "",
+                    "href": "https://en.wikipedia.org/wiki/Relational_algebra"
+                  }
+                ]
+              },
+              {
+                "title": "Tags",
+                "widgets": []
+              },
+              {
+                "title": "Attributes",
+                "widgets": []
+              }
+            ]
+          },
+          {
+            "title": "CSS",
+            "topics": []
+          }
+        ]
+      },
+      {
+        "id": "234-2",
+        "title": "Week 2",
+        "lessons": [
+          {
+            "title": "SQL Statements",
+            "topics": [
+              {
+                "title": "SELECTs",
+                "widgets": [
+                  {
+                    "type": "HEADING",
+                    "size": 1,
+                    "text": "SELECT Statement"
+                  },
+                  {
+                    "type": "PARAGRAPH",
+                    "text": "This topic introduces SELECTs"
+                  },
+                  {
+                    "type": "LIST",
+                    "items": "*, FROM, WHERE"
+                  },
+                  {
+                    "type": "IMAGE",
+                    "src": "https://picsum.photos/200"
+                  },
+                  {
+                    "type": "LINK",
+                    "title": "",
+                    "href": "https://en.wikipedia.org/wiki/SQL"
+                  }
+                ]
+              },
+              {
+                "title": "Tags",
+                "widgets": []
+              },
+              {
+                "title": "Attributes",
+                "widgets": []
+              }
+            ]
+          },
+          {
+            "title": "CSS",
+            "topics": []
+          }
+        ]
 
-  },
-  {
-    "id": "456",
-    "title": "CS4100",
-    "modules": [
-      {"lessons": {
-      "topics": []
-    }}]
-
-  },
-  {
-    "id": "567",
-    "title": "CS3000",
-    "modules": [
-      {"lessons": {
-      "topics": []
-    }}]
-
-  },
-  {
-    "id": "678",
-    "title": "CS1800",
-    "modules": [
-      {"lessons": {
-      "topics": []
-    }}]
-
-  },
-  {
-    "id": "789",
-    "title": "CS3500",
-    "modules": [
-      {"lessons": [
-        {
-          "topics": []
-        }]
-      }
+        }
     ]
   }
-
 ]

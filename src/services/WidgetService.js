@@ -2,7 +2,7 @@ export default class WidgetService {
     static myInstance = null;
 
     constructor() {
-        this.url = "localhost:3000/api/widgets/";
+        this.url = "localhost:8080/api/widgets/";
     }
 
 
