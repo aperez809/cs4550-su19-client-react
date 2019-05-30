@@ -1,0 +1,60 @@
+export default class WidgetService {
+    static myInstance = null;
+
+    constructor() {
+        this.url = "localhost:3000/api/";
+    }
+
+
+    static getInstance() {
+        if (WidgetService.myInstance == null) {
+            WidgetService.myInstance =
+                new WidgetService();
+        }
+        return this.myInstance;
+    }
+
+
+    createWidget(widget) {
+        //TODO: Implement POST request
+        const createUrl = this.url + "create/";
+
+        return fetch(createUrl, {
+            method: 'POST',
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        });
+    }
+
+
+    findAllWidgets() {
+        //TODO: Implement GET request
+        return this.widgetJson;
+    }
+
+    findWidgetById(id) {
+        const widgetFound = this.findAllWidgets().find(widget => widget.id === id);
+        if (widgetFound == undefined) {
+            alert(`Widget with ID of ${id} not found`);
+            return;
+        }
+
+        return widgetFound;
+    }
+
+    updateWidget(id, widget) {
+        //TODO: implement PUT request
+        this.widgetJson = this.widgetJson.filter(c => c.id !== id);
+        return this.createWidget(widget);
+    }
+
+    deleteWidget(id) {
+        //TODO: Implement DELETE request
+        this.widgetJson = this.widgetJson.filter(c => c.id !== id);
+        return this.widgetJson;
+    }
+}
