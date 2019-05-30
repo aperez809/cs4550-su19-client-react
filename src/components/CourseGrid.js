@@ -1,7 +1,7 @@
 import React from 'react';
 import CourseCard from "./CourseCard";
 
-const CourseGrid = ({courses, selectCourse}) =>
+const CourseGrid = ({courses, selectCourse, deleteCourse}) =>
     <div>
         <h1>Course Grid</h1>
         <div className="row">
@@ -9,6 +9,7 @@ const CourseGrid = ({courses, selectCourse}) =>
                 courses.map((course, key) =>
                     <div class="col-lg-2 col-md-4 col-sm-12">
                         <CourseCard selectCourse={selectCourse}
+                                    deleteCourse={deleteCourse}
                                     course={course}
                                     key={key}
                                     title={course.title}/>

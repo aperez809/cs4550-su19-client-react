@@ -5,5 +5,5 @@ class WidgetListItemComponent extends React.Component {
         super(props);
     }
 
-    
+
 }

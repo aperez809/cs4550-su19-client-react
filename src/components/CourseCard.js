@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
-const CourseCard = ({selectCourse, course}) =>
+const CourseCard = ({selectCourse, deleteCourse, course}) =>
 
     <div className="card" styles={{width: '18rem'}}>
         <img className="card-img-top"
@@ -22,6 +22,8 @@ const CourseCard = ({selectCourse, course}) =>
                   className="btn btn-primary">
                 More...
             </Link>
+            <button className="btn btn-danger"
+                    onClick={() => deleteCourse(course.id)}>Delete</button>
         </div>
     </div>;
 

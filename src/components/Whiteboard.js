@@ -101,6 +101,7 @@ export default class Whiteboard extends React.Component {
                                                          courses={this.state.courses}/>}/>
                         <Route path="/course-grid"
                                render={() => <CourseGrid selectCourse={this.selectCourse}
+                                                         deleteCourse={this.deleteCourse}
                                                          courses={this.state.courses}/>}/>
                         <Route path="/course-editor/:courseId"
                                render={() => <CourseEditor selectCourse={this.selectCourse}
