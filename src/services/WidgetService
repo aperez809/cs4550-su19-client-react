@@ -43,9 +43,17 @@ export default class WidgetService {
     }
 
     updateWidget(id, widget) {
-        //TODO: implement PUT request
-        this.widgetJson = this.widgetJson.filter(c => c.id !== id);
-        return this.createWidget(widget);
+        const updateUrl = this.url + id;
+
+        return fetch(updateUrl, {
+            method: 'put',
+            body: JSON.stringify(widget),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) {
+            return response.json();
+        });
     }
 
     deleteWidget(id) {
