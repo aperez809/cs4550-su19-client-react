@@ -88,6 +88,7 @@ export default class ModuleList extends React.Component {
                                                 module={currModule}
                                                 selectModule={this.props.selectModule}
                                                 deleteModule={this.deleteModule}
+                                                selectedModule={this.props.selectedModule}
                                                 key={key}
                                                 title={currModule.title}/>
                             )

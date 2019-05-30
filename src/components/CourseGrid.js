@@ -7,7 +7,7 @@ const CourseGrid = ({courses, selectCourse, deleteCourse}) =>
         <div className="row">
             {
                 courses.map((course, key) =>
-                    <div class="col-lg-2 col-md-4 col-sm-12">
+                    <div className="col-lg-2 col-md-4 col-sm-12">
                         <CourseCard selectCourse={selectCourse}
                                     deleteCourse={deleteCourse}
                                     course={course}
