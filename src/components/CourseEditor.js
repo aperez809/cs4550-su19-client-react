@@ -2,6 +2,7 @@ import React from 'react';
 import ModuleList from "./ModuleList";
 
 import Topics from "./Topics";
+import LessonTabs from './LessonTabs';
 import LessonTabItem from './LessonTabItem';
 
 export default class CourseEditor extends React.Component {
@@ -70,6 +71,11 @@ export default class CourseEditor extends React.Component {
         })
     };
 
+    createLesson = event => {
+        console.log(event);
+        this.state.selectedModule.lessons.push(event.target.value);
+    };
+
     render() {
         return (
             <div>
@@ -86,28 +92,11 @@ export default class CourseEditor extends React.Component {
                     </div>
 
                     <div className="col-8 right">
-                        <div className="container-fluid row">
-                            <ul className="nav nav-tabs">
-                                {
-                                    this.state.selectedModule.lessons.map(
-                                        currLesson => <LessonTabItem lesson={currLesson}/>
-                                    )
-                                }
-                                <li>
-                                    <input className="form-control"
-                                           onChange={this.titleChanged}
-                                           placeholder="New Lesson"
+                        <LessonTabs createLesson={this.createLesson}
+                                    selectedModule={this.state.selectedModule}
+                                    titleChanged={this.titleChanged}
                                     />
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={this.createModule}
-                                        className="ml-1 btn btn-primary float-right">
-                                        Create Lesson
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
+
                         <div className="mt-2">
                         <ul className="nav nav-pills">
                                 <Topics topic={this.state.selectedTopic}/>

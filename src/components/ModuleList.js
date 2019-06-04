@@ -9,7 +9,7 @@ export default class ModuleList extends React.Component {
         this.state = {
             module: {
                 id: -1,
-                title: "New Module",
+                title: "",
                 lessons: [
                     {
                         "title": "fgjkjklflf",
@@ -43,12 +43,13 @@ export default class ModuleList extends React.Component {
             //prepends this.state.module. Arguments could be reversed in order to append to end.
             modules: [...this.state.modules, this.state.module]
         });
+        console.log(this.state);
     };
 
     titleChanged = (event) => {
         this.setState({
             module: {
-                title: event.target.value,
+                title: event.target.value
             }
         });
     };
@@ -70,7 +71,8 @@ export default class ModuleList extends React.Component {
                     <li className="list-group-item">
                         <input className="form-control"
                                onChange={this.titleChanged}
-                               defaultValue={this.state.module.title}
+                               placeholder="New Module"
+                               value={this.state.module.title}
                                />
                         <button
                             onClick={this.createModule}
@@ -89,6 +91,7 @@ export default class ModuleList extends React.Component {
                                                 selectModule={this.props.selectModule}
                                                 deleteModule={this.deleteModule}
                                                 selectedModule={this.props.selectedModule}
+                                                editModule={this.props.editModule}
                                                 key={key}
                                                 title={currModule.title}/>
                             )
