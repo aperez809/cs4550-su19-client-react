@@ -1,7 +1,7 @@
 import React from 'react';
 import ModuleList from "./ModuleList";
 
-import Topics from "./Topics";
+import TopicsList from "./TopicsList";
 import LessonTabs from './LessonTabs';
 import LessonTabItem from './LessonTabItem';
 
@@ -41,6 +41,25 @@ export default class CourseEditor extends React.Component {
                         "widgets": []
                     }]
                 },
+                selectedTopic : {
+                    "title": "",
+                    "widgets": []},
+            });
+        }
+
+
+    };
+
+    selectTopic = topic => {
+        if (topic.lessons.length > 0) {
+            this.setState({
+                selectedTopic : topic[0]
+            });
+        }
+
+        else {
+            this.setState({
+
                 selectedTopic : {
                     "title": "",
                     "widgets": []},
@@ -95,25 +114,16 @@ export default class CourseEditor extends React.Component {
                         <LessonTabs createLesson={this.createLesson}
                                     selectedModule={this.state.selectedModule}
                                     titleChanged={this.titleChanged}
+
                                     />
 
                         <div className="mt-2">
-                        <ul className="nav nav-pills">
-                                <Topics topic={this.state.selectedTopic}/>
-                                <li>
-                                    <input className="form-control"
-                                           onChange={this.titleChanged}
-                                           placeholder="New Topic"
-                                    />
-                                </li>
-                                <li>
-                                    <button
-                                        onClick={this.createModule}
-                                        className="ml-1 btn btn-primary float-right">
-                                        Create Topic
-                                    </button>
-                                </li>
-                            </ul>
+                            <TopicsList lesson={this.state.selectedLesson}
+                                        selectedTopic={this.state.selectedTopic}
+                                        selectTopic={this.selectTopic}
+                                        editTopic={this.editTopic}
+                                        deleteTopic={this.deleteTopic}/>
+
                         </div>
                         </div>
                     </div>
