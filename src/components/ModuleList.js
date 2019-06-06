@@ -43,13 +43,31 @@ export default class ModuleList extends React.Component {
             //prepends this.state.module. Arguments could be reversed in order to append to end.
             modules: [...this.state.modules, this.state.module]
         });
-        console.log(this.state);
+        console.log(this.state.module);
     };
 
     titleChanged = (event) => {
         this.setState({
             module: {
-                title: event.target.value
+                id: -1,
+                title: event.target.value,
+                lessons: [
+                    {
+                        "title": "fgjkjklflf",
+                        "topics": [
+                            {
+                                "title": "fdsjaigr",
+                                "widgets": [
+                                    {
+                                        "type": "HEADING",
+                                        "size": 1,
+                                        "text": "eihuiwfrw"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         });
     };
@@ -57,17 +75,24 @@ export default class ModuleList extends React.Component {
     deleteModule = (id) => {
         //Special API used to set state again. Filter function takes in a predicate (in this case
         //a lambda which keeps all id's that are NOT EQUAL to the id passed in deleteModule
-        this.setState({
-            modules: this.state.modules.filter(module => module.id !== id)
-        });
+        const newListOfModules = this.state.modules.filter(module => module.id !== id);
 
-        if (this.state.modules.length != 0) {
-            this.setState({
-                selectedModule: this.state.modules[0]
-            });
+        switch(newListOfModules.length) {
+            case 0:
+                this.setState({
+                    modules: newListOfModules,
+                    selectedModule: null
+                });
+                break;
+
+            default:
+                this.setState({
+                    modules: newListOfModules,
+                    selectedModule: this.state.modules[0]
+                });
+                break;
         }
-
-        console.log(this.state.selectedModule);
+        this.props.selectModule(this.state.modules[0])
     };
 
 
@@ -102,6 +127,7 @@ export default class ModuleList extends React.Component {
                                                 selectedModule={this.props.selectedModule}
                                                 editModule={this.props.editModule}
                                                 key={key}
+                                                moduleInProgress={this.state.module}
                                                 title={currModule.title}/>
                             )
                         )

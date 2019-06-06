@@ -3,7 +3,7 @@ import ModuleList from "./ModuleList";
 
 import TopicsList from "./TopicsList";
 import LessonTabs from './LessonTabs';
-import LessonTabItem from './LessonTabItem';
+import WidgetListComponent from './WidgetListComponent';
 
 export default class CourseEditor extends React.Component {
     constructor(props) {
@@ -23,31 +23,12 @@ export default class CourseEditor extends React.Component {
     }
 
     selectModule = module => {
-        if (module.lessons.length > 0) {
-            this.setState({
-                selectedModule: module,
-                selectedLesson: module.lessons[0],
-                selectedTopic : module.lessons[0].topics[0]
-            });
-        }
-
-        else {
-            this.setState({
-                selectedModule: module,
-                selectedLesson: {
-                    "title": "",
-                    "topics": [{
-                        "title": "",
-                        "widgets": []
-                    }]
-                },
-                selectedTopic : {
-                    "title": "",
-                    "widgets": []},
-            });
-        }
-
-
+        console.log(module);
+        this.setState({
+            selectedModule: module,
+            selectedLesson: module.lessons[0],
+            selectedTopic : module.lessons[0].topics[0]
+        });
     };
 
     selectLesson = lesson => {
@@ -65,7 +46,6 @@ export default class CourseEditor extends React.Component {
     };
 
     createModule = () => {
-
         //Special API used for resetting the state in some way: In this case, prepending an item
         //to the module list.
         this.setState({
@@ -76,6 +56,7 @@ export default class CourseEditor extends React.Component {
             //prepends this.state.module. Arguments could be reversed in order to append to end.
             modules: [...this.state.modules, this.state.module]
         });
+        console.log(this.state.modules)
     };
 
     editModule = (module) => {
@@ -121,9 +102,10 @@ export default class CourseEditor extends React.Component {
                                         deleteTopic={this.deleteTopic}/>
 
                         </div>
-                        </div>
+                        <WidgetListComponent widgets={this.state.selectedTopic.widgets}/>
                     </div>
                 </div>
+            </div>
         )
     }
 }

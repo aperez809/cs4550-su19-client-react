@@ -2,7 +2,7 @@ import React from 'react';
 
 const ModuleItem = ({module, deleteModule, selectModule, editModule, selectedModule}) =>
     <li onClick={() => selectModule(module)}
-        className={module == selectedModule ? "list-group-item active": "list-group-item"}>
+        className={module.id == selectedModule.id ? "list-group-item active": "list-group-item"}>
         {module.title}
         <button className="ml-1 btn btn-danger float-right"
                 onClick={() => deleteModule(module.id)}>Delete</button>
