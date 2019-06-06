@@ -4,6 +4,7 @@ import ModuleList from "./ModuleList";
 import TopicsList from "./TopicsList";
 import LessonTabs from './LessonTabs';
 import WidgetListComponent from './WidgetListComponent';
+import WidgetListContainer from '../containers/WidgetListContainer';
 
 export default class CourseEditor extends React.Component {
     constructor(props) {
@@ -102,7 +103,7 @@ export default class CourseEditor extends React.Component {
                                         deleteTopic={this.deleteTopic}/>
 
                         </div>
-                        <WidgetListComponent widgets={this.state.selectedTopic.widgets}/>
+                        <WidgetListContainer widgets={this.state.selectedTopic.widgets}/>
                     </div>
                 </div>
             </div>

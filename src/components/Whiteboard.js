@@ -1,15 +1,19 @@
 import React from "react";
 import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
 import CourseGrid from './CourseGrid'
 import CourseList from './CourseTable'
 import CourseService from '../services/CourseService';
+import WidgetService from "../services/WidgetService";
+import WidgetReducer from '../reducers/WidgetReducer';
 
 let courseService =
     CourseService.getInstance();
 var courses =
     courseService.findAllCourses();
-
+const store = createStore(WidgetReducer);
 
 export default class Whiteboard extends React.Component {
     constructor(props) {
@@ -64,6 +68,7 @@ export default class Whiteboard extends React.Component {
 
     render() {
         return (
+            <Provider store={store}>
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
                     <a className="navbar-brand" styles={{'backgroundColor':'red'}} href="#">Course Manager</a>
@@ -110,7 +115,7 @@ export default class Whiteboard extends React.Component {
                     </div>
 
             </div>
-
+            </Provider>
         )
     }
 }

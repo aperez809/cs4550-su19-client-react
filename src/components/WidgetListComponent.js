@@ -2,9 +2,8 @@ import React from 'react';
 import WidgetListItemComponent from './WidgetListItemComponent';
 
 const WidgetListComponent = ({widgets}) =>
-    <ul className="nav nav-pills">
-
-
+    <div aria-orientation="vertical">
+    <ul className="list-group">
         {/*Curly brace syntax used to denote where JS code will be inserted into XML*/}
         {/*Using .map() in this instance is the best way to iterate through the rows and
                     dynamically render rows in the XML*/}
@@ -21,20 +20,7 @@ const WidgetListComponent = ({widgets}) =>
                 )
             )
         }
-        <li className="nav-item float-right">
-            <input className="form-control"
-                //onChange={this.titleChanged}
-                   placeholder="New Topic"
-                //value={this.state.module.title}
-            />
-        </li>
-        <li className="nav-item float-right">
-            <button
-                //onClick={this.createModule}
-                className="btn btn-primary">
-                Create Topic
-            </button>
-        </li>
-    </ul>;
+    </ul>
+    </div>;
 
 export default WidgetListComponent;
