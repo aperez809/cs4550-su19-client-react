@@ -1,13 +1,14 @@
 import React from 'react';
 import LessonTabItem from './LessonTabItem';
 
-const LessonTabs = ({lessons, selectedModule, titleChanged, createLesson, selectLesson}) =>
+const LessonTabs = ({lessons, selectedModule, titleChanged, createLesson, selectLesson, selectedLesson}) =>
     <div className="container-fluid row">
         <ul className="nav nav-tabs">
             {
                 selectedModule.lessons.map(
                     currLesson => <LessonTabItem lesson={currLesson}
-                                                 selectLesson={selectLesson}/>
+                                                 selectLesson={selectLesson}
+                                                 selectedLesson={selectedLesson}/>
                 )
             }
         </ul>

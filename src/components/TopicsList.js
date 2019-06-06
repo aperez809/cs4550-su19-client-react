@@ -1,8 +1,8 @@
 import React from 'react';
 import TopicsListItem from './TopicsListItem';
 
-const TopicsList = ({lesson, selectTopic, deleteTopic, selectedTopic, editTopic}) =>
-
+const TopicsList = ({topics, selectTopic, deleteTopic, selectedTopic, editTopic}) =>
+<nav>
     <div className="container-fluid row">
         <ul className="nav nav-pills">
 
@@ -10,9 +10,8 @@ const TopicsList = ({lesson, selectTopic, deleteTopic, selectedTopic, editTopic}
             {/*Curly brace syntax used to denote where JS code will be inserted into XML*/}
             {/*Using .map() in this instance is the best way to iterate through the rows and
                     dynamically render rows in the XML*/}
-            {console.log(lesson)}
             {
-                lesson.topics.map(
+                topics.map(
                     ((currTopic, key) => <TopicsListItem
                             currTopic={currTopic}
                             selectTopic={selectTopic}
@@ -39,6 +38,7 @@ const TopicsList = ({lesson, selectTopic, deleteTopic, selectedTopic, editTopic}
                 </button>
             </li>
         </ul>
-    </div>;
+    </div>
+</nav>;
 
 export default TopicsList;
