@@ -12,7 +12,6 @@ const TopicsList = ({lesson, selectTopic, deleteTopic, selectedTopic, editTopic}
                     dynamically render rows in the XML*/}
             {console.log(lesson)}
             {
-
                 lesson.topics.map(
                     ((currTopic, key) => <TopicsListItem
                             currTopic={currTopic}
@@ -25,14 +24,14 @@ const TopicsList = ({lesson, selectTopic, deleteTopic, selectedTopic, editTopic}
                     )
                 )
             }
-            <li className="nav-item">
+            <li className="nav-item float-right">
                 <input className="form-control"
                     //onChange={this.titleChanged}
                        placeholder="New Topic"
                     //value={this.state.module.title}
                 />
             </li>
-            <li className="nav-item">
+            <li className="nav-item float-right">
                 <button
                     //onClick={this.createModule}
                     className="btn btn-primary">

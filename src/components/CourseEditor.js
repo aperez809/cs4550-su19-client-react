@@ -50,23 +50,23 @@ export default class CourseEditor extends React.Component {
 
     };
 
+    selectLesson = lesson => {
+        for (var i = 0; i < this.state.selectedModule.length; i++) {
+            if (lesson.title === this.state.selectedModule[i]) {
+                const newLesson = this.state.selectedModule[i];
+            };
+        }
+        this.setState({
+            selectedLesson: this.state.selectedModule.lessons.find(l => l.title == lesson.title)
+        })
+    };
+
     selectTopic = topic => {
-        if (topic.lessons.length > 0) {
-            this.setState({
-                selectedTopic : topic[0]
-            });
-        }
+        this.setState({
+            selectedTopic: topic[0]
+        });
 
-        else {
-            this.setState({
-
-                selectedTopic : {
-                    "title": "",
-                    "widgets": []},
-            });
-        }
-
-
+        console.log(this.state.selectedTopic);
     };
 
     createModule = () => {
@@ -114,7 +114,7 @@ export default class CourseEditor extends React.Component {
                         <LessonTabs createLesson={this.createLesson}
                                     selectedModule={this.state.selectedModule}
                                     titleChanged={this.titleChanged}
-
+                                    selectLesson={this.selectLesson}
                                     />
 
                         <div className="mt-2">

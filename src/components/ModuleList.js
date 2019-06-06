@@ -60,7 +60,16 @@ export default class ModuleList extends React.Component {
         this.setState({
             modules: this.state.modules.filter(module => module.id !== id)
         });
+
+        if (this.state.modules.length != 0) {
+            this.setState({
+                selectedModule: this.state.modules[0]
+            });
+        }
+
+        console.log(this.state.selectedModule);
     };
+
 
 
     render() {
