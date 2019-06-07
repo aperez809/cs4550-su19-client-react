@@ -91,14 +91,6 @@ export default class Whiteboard extends React.Component {
                     <div className="container-fluid">
                         <h1>Whiteboard</h1>
 
-                        <div>
-                            <button onClick={() => wServ.findAllWidgets()}>Find All Widgets</button>
-                            <button></button>
-                            <button></button>
-                            <button></button>
-                            <button></button>
-
-                        </div>
 
                         <Router>
                         <Link to="/course-list">
@@ -123,8 +115,6 @@ export default class Whiteboard extends React.Component {
                                render={() => <CourseEditor selectCourse={this.selectCourse}
                                                            courses={this.state.courses}/>}/>
                         </Router>
-
-                        <WidgetListContainer/>
 
                     </div>
 
