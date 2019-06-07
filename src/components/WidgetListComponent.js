@@ -1,7 +1,13 @@
 import React from 'react';
-import WidgetListItemComponent from './WidgetListItemComponent';
+import HeadingWidget from "./HeadingWidget";
+import ParagraphWidget from "./ParagraphWidget";
+import ImageWidget from "./ImageWidget";
+import ListWidget from "./ListWidget";
+import LinkWidget from "./LinkWidget";
+import {connect} from 'react-redux'
 
-//const WidgetListComponent = ({widgets}) =>
+let Widget;
+
 class WidgetListComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -25,19 +31,41 @@ class WidgetListComponent extends React.Component {
                             dynamically render rows in the XML*/}
                     {
                         this.props.widgets.map(
-                            ((currWidget, key) => <WidgetListItemComponent
-                                    currWidget={currWidget}
-                                    //selectTopic={selectTopic}
-                                    //deleteTopic={deleteTopic}
-                                    //selectedTopic={selectedTopic}
-                                    //editTopic={editTopic}
-                                    key={key}
-                                    title={currWidget.title}
-                                    deleteWidget={this.props.deleteWidget}
-                                    editWidget={this.props.editWidget}
-                                    editing={this.state.editing}
-                                    toggleEditing={this.toggleEditing}
-                                    updateWidget={this.props.updateWidget}/>
+                            ((currWidget) => {
+                                    switch (currWidget.type) {
+                                        case "HEADING":
+                                            Widget = connect()(HeadingWidget);
+                                            break;
+
+                                        case "PARAGRAPH":
+                                            Widget = connect()(ParagraphWidget);
+                                            break;
+
+                                        case "IMAGE":
+                                            Widget = connect()(ImageWidget);
+                                            break;
+
+                                        case "LIST":
+                                            Widget = connect()(ListWidget);
+                                            break;
+
+                                        case "LINK":
+                                            Widget = connect()(LinkWidget);
+                                            break;
+
+                                        default:
+                                            Widget = connect()(HeadingWidget);
+                                    }
+                                    return <Widget
+                                                currWidget={Widget}
+                                                key={currWidget.id}
+                                                title={currWidget.name}
+                                                deleteWidget={this.props.deleteWidget}
+                                                editWidget={this.props.editWidget}
+                                                editing={this.state.editing}
+                                                toggleEditing={this.toggleEditing}
+                                                updateWidget={this.props.updateWidget}/>
+                                }
                             )
                         )
 
