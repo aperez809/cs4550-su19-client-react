@@ -37,11 +37,11 @@ export default class WidgetService {
         });
     }
 
-    updateWidget(id, widget) {
-        const updateUrl = "http://localhost:8080/api/widgets/" + id;
-
+    updateWidget(widget) {
+        const updateUrl = `http://localhost:8080/api/widgets/` + widget.id;
+        console.log(updateUrl);
         return fetch(updateUrl, {
-            method: 'put',
+            method: 'PUT',
             body: JSON.stringify(widget),
             headers: {
                 'content-type': 'application/json'

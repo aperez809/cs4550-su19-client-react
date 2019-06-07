@@ -10,12 +10,23 @@ const stateToPropertyMapper = state => ({
 
 const dispathToPropertyMapper = dispatch => ({
     //TODO: ADD DIFFERENT ACTION TYPES AS FUNCTIONS
+    updateWidget: newWidget => {
+        widgetService
+            .updateWidget(newWidget)
+            .then(widgets =>
+                dispatch({
+                    type: "UPDATE_WIDGET",
+                    widgets: widgets
+                }));
+    },
+
     createWidget: () => {
-        widgetService.createWidget({
-            id: new Date().getTime(),
-            name: "New Widget",
-            type: "HEADING",
-        })
+        widgetService
+            .createWidget({
+                id: new Date().getTime(),
+                name: "New Widget",
+                type: "HEADING",
+            })
             .then(widgets =>
                 dispatch({
                     type: "CREATE_WIDGET",

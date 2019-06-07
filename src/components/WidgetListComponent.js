@@ -36,7 +36,8 @@ class WidgetListComponent extends React.Component {
                                     deleteWidget={this.props.deleteWidget}
                                     editWidget={this.props.editWidget}
                                     editing={this.state.editing}
-                                    toggleEditing={this.toggleEditing}/>
+                                    toggleEditing={this.toggleEditing}
+                                    updateWidget={this.props.updateWidget}/>
                             )
                         )
 

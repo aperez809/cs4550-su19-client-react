@@ -20,8 +20,9 @@ const WidgetReducer = (state = {widgets: []}, action) => {
             };
 
         case "UPDATE_WIDGET":
-            //TODO: find way to get these args
-            return;
+            return {
+                widgets: action.widgets
+            };
 
         case "FIND_WIDGET":
             return state.widgets.find( widget => widget.id == action.id);
