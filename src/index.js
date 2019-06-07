@@ -6,10 +6,14 @@ import { Provider, connect } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Whiteboard from "./components/Whiteboard.js";
+import WidgetReducer from './reducers/WidgetReducer';
+const store = createStore(WidgetReducer);
 
 ReactDOM.render(
     <div>
-        <Whiteboard/>
+        <Provider store={store}>
+            <Whiteboard/>
+        </Provider>
     </div>,
     document.getElementById('root')
 );

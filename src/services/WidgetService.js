@@ -1,11 +1,6 @@
 export default class WidgetService {
     static myInstance = null;
 
-    constructor() {
-        this.url = "https://localhost:8080/api/widgets/";
-    }
-
-
     static getInstance() {
         if (WidgetService.myInstance == null) {
             WidgetService.myInstance =
@@ -16,11 +11,11 @@ export default class WidgetService {
 
 
     createWidget(widget) {
-        return fetch(this.url, {
-            method: 'POST',
+        return fetch("http://localhost:8080/api/widgets/", {
+            method: "POST",
             body: JSON.stringify(widget),
             headers: {
-                'content-type': 'application/json'
+                "content-type": "application/json"
             }
         }).then(function (response) {
             return response.json();
@@ -28,14 +23,14 @@ export default class WidgetService {
     }
 
 
-    findAllWidgets() {
-        return fetch(this.url).then(function (response) {
+    findAllWidgets = () => {
+        return fetch("http://localhost:8080/api/widgets/").then(function (response) {
             return response.json();
         });
-    }
+    };
 
     findWidgetById(id) {
-        const findUrl = this.url + id;
+        const findUrl = "http://localhost:8080/api/widgets/" + id;
 
         return fetch(findUrl).then(function (response) {
             return response.json();
@@ -43,7 +38,7 @@ export default class WidgetService {
     }
 
     updateWidget(id, widget) {
-        const updateUrl = this.url + id;
+        const updateUrl = "http://localhost:8080/api/widgets/" + id;
 
         return fetch(updateUrl, {
             method: 'put',
@@ -57,7 +52,7 @@ export default class WidgetService {
     }
 
     deleteWidget(id) {
-        const deleteUrl = this.url + id;
+        const deleteUrl = "http://localhost:8080/api/widgets/" + id;
         return fetch(deleteUrl, {
             method: "delete"
         }).then(function (response) {

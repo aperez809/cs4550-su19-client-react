@@ -8,11 +8,13 @@ import CourseList from './CourseTable'
 import CourseService from '../services/CourseService';
 import WidgetService from "../services/WidgetService";
 import WidgetReducer from '../reducers/WidgetReducer';
+import WidgetListContainer from '../containers/WidgetListContainer';
 
 let courseService =
     CourseService.getInstance();
 var courses =
     courseService.findAllCourses();
+let wServ = WidgetService.getInstance();
 const store = createStore(WidgetReducer);
 
 export default class Whiteboard extends React.Component {
@@ -25,7 +27,7 @@ export default class Whiteboard extends React.Component {
                 id: new Date().getTime(),
                 title: ""
             }
-        }
+        };
     }
 
     selectCourse = course => {
@@ -89,6 +91,15 @@ export default class Whiteboard extends React.Component {
                     <div className="container-fluid">
                         <h1>Whiteboard</h1>
 
+                        <div>
+                            <button onClick={() => wServ.findAllWidgets()}>Find All Widgets</button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+
+                        </div>
+
                         <Router>
                         <Link to="/course-list">
                             <button className="btn btn-primary">List</button>
@@ -112,6 +123,9 @@ export default class Whiteboard extends React.Component {
                                render={() => <CourseEditor selectCourse={this.selectCourse}
                                                            courses={this.state.courses}/>}/>
                         </Router>
+
+                        <WidgetListContainer/>
+
                     </div>
 
             </div>
