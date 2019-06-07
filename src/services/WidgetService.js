@@ -11,7 +11,7 @@ export default class WidgetService {
 
 
     createWidget(widget) {
-        return fetch("http://localhost:8080/api/widgets/", {
+        return fetch("https://limitless-citadel-58042.herokuapp.com/api/widgets/", {
             method: "POST",
             body: JSON.stringify(widget),
             headers: {
@@ -24,13 +24,13 @@ export default class WidgetService {
 
 
     findAllWidgets = () => {
-        return fetch("http://localhost:8080/api/widgets/").then(function (response) {
+        return fetch("https://limitless-citadel-58042.herokuapp.com/api/widgets/").then(function (response) {
             return response.json();
         });
     };
 
     findWidgetById(id) {
-        const findUrl = "http://localhost:8080/api/widgets/" + id;
+        const findUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + id;
 
         return fetch(findUrl).then(function (response) {
             return response.json();
@@ -38,7 +38,7 @@ export default class WidgetService {
     }
 
     updateWidget(widget) {
-        const updateUrl = `http://localhost:8080/api/widgets/` + widget.id;
+        const updateUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + widget.id;
         console.log(updateUrl);
         return fetch(updateUrl, {
             method: 'PUT',
@@ -52,7 +52,7 @@ export default class WidgetService {
     }
 
     deleteWidget(id) {
-        const deleteUrl = "http://localhost:8080/api/widgets/" + id;
+        const deleteUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + id;
         return fetch(deleteUrl, {
             method: "delete"
         }).then(function (response) {
