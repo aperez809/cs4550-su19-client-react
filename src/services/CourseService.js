@@ -1,11 +1,9 @@
-import courses from '../components/courses.json';
+
 
 export default class CourseService {
     static myInstance = null;
 
-    constructor() {
-        this.courseJson = courses;
-    }
+    constructor() {}
 
 
     static getInstance() {
@@ -17,34 +15,51 @@ export default class CourseService {
     }
 
 
-    createCourse(course) {
-        this.courseJson.push(course);
-        return this.courseJson;
-
-    }
-
-
     findAllCourses() {
-        return this.courseJson;
+        const getUrl = "http://localhost:8080/api/courses";
+        return fetch(getUrl).then(response => {
+            return response.json();
+        });
     }
 
     findCourseById(id) {
-        const courseFound = this.courseJson.find(course => course.id === id);
-        if (courseFound == undefined) {
-            alert(`Course with ID of ${id} not found`);
-            return;
-        }
-
-        return courseFound;
+        const getUrl = "http://localhost:8080/api/courses" + id;
+        return fetch(getUrl).then(response => {
+            return response.json();
+        });
     }
 
     updateCourse(id, course) {
-        this.courseJson = this.courseJson.filter(c => c.id !== id);
-        return this.createCourse(course);
+        const updateUrl = "http://localhost:8080/api/courses" + id;
+        return fetch(updateUrl, {
+            method: 'put',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
     }
 
+
     deleteCourse(id) {
-        this.courseJson = this.courseJson.filter(c => c.id !== id);
-        return this.courseJson;
+        const deleteUrl = "http://localhost:8080/api/courses" + id;
+        return fetch(deleteUrl, {
+            method: 'delete',
+        }).then(response => {
+            return response.json();
+        });
     }
+
+    createCourse(course) {
+        const createUrl = "http://localhost:8080/api/courses";
+        return fetch(createUrl, {
+            method: 'post',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
+                }
+            }).then(response => {
+                return response.json();
+        });
+    };
 }
