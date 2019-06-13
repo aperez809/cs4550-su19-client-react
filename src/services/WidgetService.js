@@ -1,6 +1,8 @@
 export default class WidgetService {
     static myInstance = null;
 
+    constructor() {}
+
     static getInstance() {
         if (WidgetService.myInstance == null) {
             WidgetService.myInstance =
@@ -9,37 +11,24 @@ export default class WidgetService {
         return this.myInstance;
     }
 
-
-    createWidget(widget) {
-        return fetch("https://limitless-citadel-58042.herokuapp.com/api/widgets/", {
-            method: "POST",
-            body: JSON.stringify(widget),
-            headers: {
-                "content-type": "application/json"
-            }
-        }).then(function (response) {
-            return response.json();
-        });
-    }
-
-
-    findAllWidgets = () => {
-        return fetch("https://limitless-citadel-58042.herokuapp.com/api/widgets/").then(function (response) {
+    findAllWidgets(tid) {
+        const getUrl = "http://localhost:8080/api/topics/" + tid + "/widgets";
+        return fetch(getUrl).then(response => {
             return response.json();
         });
     };
 
-    findWidgetById(id) {
-        const findUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + id;
 
-        return fetch(findUrl).then(function (response) {
+    findWidgetById(id) {
+        const getUrl = "http://localhost:8080/api/topics/" + tid + "/widgets";
+
+        return fetch(getUrl).then(function (response) {
             return response.json();
         });
     }
 
     updateWidget(widget) {
-        const updateUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + widget.id;
-        console.log(updateUrl);
+        const updateUrl = "http://localhost:8080/api/widgets/" + widget.id;
         return fetch(updateUrl, {
             method: 'PUT',
             body: JSON.stringify(widget),
@@ -52,9 +41,22 @@ export default class WidgetService {
     }
 
     deleteWidget(id) {
-        const deleteUrl = "https://limitless-citadel-58042.herokuapp.com/api/widgets/" + id;
+        const deleteUrl = "http://localhost:8080/api/widgets/" + id;
         return fetch(deleteUrl, {
             method: "delete"
+        }).then(function (response) {
+            return response.json();
+        });
+    }
+
+    createWidget(widget) {
+        const createUrl = "http://localhost:8080/api/widgets";
+        return fetch(createUrl, {
+            method: "POST",
+            body: JSON.stringify(widget),
+            headers: {
+                "content-type": "application/json"
+            }
         }).then(function (response) {
             return response.json();
         });
