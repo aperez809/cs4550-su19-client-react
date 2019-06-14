@@ -37,7 +37,9 @@ export default class Whiteboard extends React.Component {
     }
 
     selectCourse = id => {
-        this.setState({selectedCourse: this.state.courses.find(course => course.id == id)});
+        this.setState(
+            {selectedCourse: this.state.courses.find(course => course.id == id)}
+            );
     };
 
     deleteCourse = id => {
@@ -49,23 +51,23 @@ export default class Whiteboard extends React.Component {
     createCourse = event => {
         event.preventDefault();
         console.log(event.target.value);
-        this.setState({
-            courses: courseService.createCourse(
-                {
-                    title: event.target.value,
+        courseService.createCourse({
+            title: this.state.courseInProgress.title,
+            modules: [],
+            author: ""
+        }).then(response => {
+            this.setState({
+                courses: response,
+                courseInProgress: {
+                    title: "",
                     modules: [],
                     author: ""
-                }),
-            courseInProgress: {
-                title: "",
-                modules: [],
-                author: ""
-            }
+                }
+            });
         });
     };
 
     courseTitleChanged = (event) => {
-        console.log(event.target.value);
         this.setState({
             courseInProgress: {
                 title: event.target.value,
@@ -85,10 +87,13 @@ export default class Whiteboard extends React.Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                             <form className="form-inline">
-                            <input className="form-control mr-sm-2" placeholder="New Course Title" aria-label="New Course"/>
-                            <button onChange={this.courseTitleChanged}
+                            <input onChange={this.courseTitleChanged}
+                                   value={this.state.courseInProgress.title}
+                                   className="form-control mr-sm-2"
+                                   placeholder="New Course Title"
+                                   aria-label="New Course"/>
+                            <button
                                     onClick={this.createCourse}
-                                    value={this.state.courseInProgress.title}
                                     className="btn btn-outline-success my-2 my-sm-0">Create</button>
                         </form>
                     </div>

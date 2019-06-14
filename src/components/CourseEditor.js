@@ -22,8 +22,7 @@ export default class CourseEditor extends React.Component {
         };
     }
 
-    selectModule = module => {
-        console.log(module);
+    selectModule = (module) => {
         this.setState({
             selectedModule: module,
             selectedLesson: module.lessons[0],
@@ -60,15 +59,17 @@ export default class CourseEditor extends React.Component {
     };
 
     editModule = (module) => {
-        module.title =
         this.setState({
             selectedModule: module
         })
     };
 
     createLesson = event => {
-        console.log(event);
-        this.state.selectedModule.lessons.push(event.target.value);
+        const newListOfLesson = this.state.selectedModule.lessons;
+        newListOfLesson.push(event.target.value);
+        this.setState({
+            selectedModule: newListOfLesson
+        });
     };
 
     render() {
@@ -102,7 +103,8 @@ export default class CourseEditor extends React.Component {
                                         deleteTopic={this.deleteTopic}/>
 
                         </div>
-                        <WidgetListContainer widgets={this.state.selectedTopic.widgets}/>
+                        <WidgetListContainer widgets={this.state.selectedTopic.widgets}
+                                             selectedTopic={this.state.selectedTopic}/>
                     </div>
                 </div>
             </div>

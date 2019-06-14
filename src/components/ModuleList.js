@@ -76,6 +76,7 @@ export default class ModuleList extends React.Component {
         //Special API used to set state again. Filter function takes in a predicate (in this case
         //a lambda which keeps all id's that are NOT EQUAL to the id passed in deleteModule
         const newListOfModules = this.state.modules.filter(module => module.id !== id);
+        console.log(newListOfModules);
 
         switch(newListOfModules.length) {
             case 0:
@@ -88,11 +89,11 @@ export default class ModuleList extends React.Component {
             default:
                 this.setState({
                     modules: newListOfModules,
-                    selectedModule: this.state.modules[0]
                 });
+                this.props.selectModule(newListOfModules[0]);
                 break;
         }
-        this.props.selectModule(this.state.modules[0])
+
     };
 
 

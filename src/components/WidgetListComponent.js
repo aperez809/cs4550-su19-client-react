@@ -30,7 +30,7 @@ class WidgetListComponent extends React.Component {
                     {/*Using .map() in this instance is the best way to iterate through the rows and
                             dynamically render rows in the XML*/}
                     {
-                        this.props.widgets.map(
+                        this.props.selectedTopic.widgets.map(
                             ((currWidget) => {
                                     switch (currWidget.type) {
                                         case "HEADING":
