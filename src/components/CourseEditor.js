@@ -3,7 +3,6 @@ import ModuleList from "./ModuleList";
 
 import TopicsList from "./TopicsList";
 import LessonTabs from './LessonTabs';
-import WidgetListComponent from './WidgetListComponent';
 import WidgetListContainer from '../containers/WidgetListContainer';
 
 export default class CourseEditor extends React.Component {

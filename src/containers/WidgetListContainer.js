@@ -8,8 +8,7 @@ const stateToPropertyMapper = state => ({
     widgets: state.widgets
 });
 
-const dispathToPropertyMapper = dispatch => ({
-    //TODO: ADD DIFFERENT ACTION TYPES AS FUNCTIONS
+const dispatchToPropertyMapper = dispatch => ({
     updateWidget: newWidget => {
         widgetService
             .updateWidget(newWidget)
@@ -23,7 +22,6 @@ const dispathToPropertyMapper = dispatch => ({
     createWidget: () => {
         widgetService
             .createWidget({
-                id: new Date().getTime(),
                 name: "New Widget",
                 type: "HEADING",
             })
@@ -55,7 +53,7 @@ const dispathToPropertyMapper = dispatch => ({
 
 const WidgetListContainer = connect(
     stateToPropertyMapper,
-    dispathToPropertyMapper)(WidgetListComponent);
+    dispatchToPropertyMapper)(WidgetListComponent);
 
 export default WidgetListContainer;
 

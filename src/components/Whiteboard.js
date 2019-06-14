@@ -4,18 +4,21 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 import CourseGrid from './CourseGrid'
-import CourseList from './CourseTable'
+import CourseListContainer from '../containers/CourseListContainer';
 import CourseService from '../services/CourseService';
 import WidgetService from "../services/WidgetService";
 import WidgetReducer from '../reducers/WidgetReducer';
-import WidgetListContainer from '../containers/WidgetListContainer';
+import reducer from '../reducers/index';
+
+const store = createStore(reducer);
 
 let courseService =
     CourseService.getInstance();
 var courses =
     courseService.findAllCourses();
 let wServ = WidgetService.getInstance();
-const store = createStore(WidgetReducer);
+
+
 
 export default class Whiteboard extends React.Component {
     constructor(props) {
@@ -24,10 +27,11 @@ export default class Whiteboard extends React.Component {
             selectedCourse: courses[0],
             courses: courses,
             courseInProgress: {
-                id: new Date().getTime(),
-                title: ""
+                title: "",
+                author: ""
             }
         };
+        console.log(this.state.courses);
     }
 
     selectCourse = course => {
@@ -46,13 +50,14 @@ export default class Whiteboard extends React.Component {
         this.setState({
             courses: courseService.createCourse(
                 {
-                    id: new Date().getTime(),
                     title: event.target.value,
-                    modules: []
+                    modules: [],
+                    author: ""
                 }),
             courseInProgress: {
-                id: new Date().getTime(),
-                title: ""
+                title: "",
+                modules: [],
+                author: ""
             }
         });
     };
@@ -71,7 +76,6 @@ export default class Whiteboard extends React.Component {
     render() {
         return (
             <Provider store={store}>
-            <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
                     <a className="navbar-brand" styles={{'backgroundColor':'red'}} href="#">Course Manager</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +95,6 @@ export default class Whiteboard extends React.Component {
                     <div className="container-fluid">
                         <h1>Whiteboard</h1>
 
-
                         <Router>
                         <Link to="/course-list">
                             <button className="btn btn-primary">List</button>
@@ -104,7 +107,7 @@ export default class Whiteboard extends React.Component {
                         </Link>*/}
 
                         <Route path="/course-list"
-                               render={() => <CourseList deleteCourse={this.deleteCourse}
+                               render={() => <CourseListContainer deleteCourse={this.deleteCourse}
                                                          selectCourse={this.selectCourse}
                                                          courses={this.state.courses}/>}/>
                         <Route path="/course-grid"
@@ -117,8 +120,6 @@ export default class Whiteboard extends React.Component {
                         </Router>
 
                     </div>
-
-            </div>
             </Provider>
         )
     }

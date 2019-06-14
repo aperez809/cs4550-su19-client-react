@@ -20,7 +20,7 @@ export default class WidgetService {
 
 
     findWidgetById(id) {
-        const getUrl = "http://localhost:8080/api/topics/" + tid + "/widgets";
+        const getUrl = "http://localhost:8080/api/topics/" + id + "/widgets";
 
         return fetch(getUrl).then(function (response) {
             return response.json();

@@ -1,20 +1,33 @@
 import React from 'react';
 import CourseListItem from './CourseRow';
 
-const CourseList = ({courses, selectCourse, deleteCourse}) =>
-    <div>
-        <h1>Course List</h1>
-            <div className="list-group">
-                {
-                    courses.map((course) =>
-                        <CourseListItem deleteCourse={deleteCourse}
-                                        selectCourse={selectCourse}
-                                        course={course}
-                                        key={course.id}/>
-                    )
-                }
 
+
+//const CourseTable = ({courses, selectCourse, deleteCourse}) =>
+class CourseTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props.findAllCourses();
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>Course List</h1>
+                <div className="list-group">
+                    {
+                        this.props.courses.map((course) =>
+                            <CourseListItem deleteCourse={this.props.deleteCourse}
+                                            selectCourse={this.props.selectCourse}
+                                            course={course}
+                                            key={course.id}/>
+                        )
+                    }
+
+                </div>
             </div>
-    </div>;
+        );
+    }
+}
 
-export default CourseList;
+export default CourseTable;

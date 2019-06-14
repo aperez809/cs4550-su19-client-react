@@ -6,8 +6,9 @@ import { Provider, connect } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Whiteboard from "./components/Whiteboard.js";
-import WidgetReducer from './reducers/WidgetReducer';
-const store = createStore(WidgetReducer);
+import reducer from './reducers/index';
+
+const store = createStore(reducer);
 
 ReactDOM.render(
     <div>
