@@ -43,7 +43,6 @@ export default class ModuleList extends React.Component {
             //prepends this.state.module. Arguments could be reversed in order to append to end.
             modules: [...this.state.modules, this.state.module]
         });
-        console.log(this.state.module);
     };
 
     titleChanged = (event) => {
@@ -75,8 +74,7 @@ export default class ModuleList extends React.Component {
     deleteModule = (id) => {
         //Special API used to set state again. Filter function takes in a predicate (in this case
         //a lambda which keeps all id's that are NOT EQUAL to the id passed in deleteModule
-        const newListOfModules = this.state.modules.filter(module => module.id !== id);
-        console.log(newListOfModules);
+        const newListOfModules = this.props.modules.filter(module => module.id !== id);
 
         switch(newListOfModules.length) {
             case 0:
@@ -119,8 +117,9 @@ export default class ModuleList extends React.Component {
                     {/*Curly brace syntax used to denote where JS code will be inserted into XML*/}
                     {/*Using .map() in this instance is the best way to iterate through the rows and
                     dynamically render rows in the XML*/}
+                    {console.log(this.state.modules)}
                     {
-                        this.state.modules.map(
+                        this.props.modules.map(
                             ((currModule, key) => <ModuleItem
                                                 module={currModule}
                                                 selectModule={this.props.selectModule}

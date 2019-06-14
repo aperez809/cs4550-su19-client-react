@@ -31,10 +31,14 @@ export default class Whiteboard extends React.Component {
                 author: ""
             }
         };
+    }
+
+    componentDidMount = () => {
         courseService.findAllCourses().then(response => {
             this.setState({courses: response})
         });
-    }
+    };
+
 
     selectCourse = id => {
         this.setState(
@@ -124,7 +128,7 @@ export default class Whiteboard extends React.Component {
                         <Route path="/course-editor/:courseId"
                                render={() => <CourseEditor selectCourse={this.selectCourse}
                                                            courses={this.state.courses}
-                                                            selectedCourse={this.state.selectedCourse}/>}/>
+                                                           selectedCourse={this.state.selectedCourse}/>}/>
                         </Router>
 
                     </div>

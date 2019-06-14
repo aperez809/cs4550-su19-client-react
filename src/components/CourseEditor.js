@@ -4,6 +4,8 @@ import ModuleList from "./ModuleList";
 import TopicsList from "./TopicsList";
 import LessonTabs from './LessonTabs';
 import WidgetListContainer from '../containers/WidgetListContainer';
+import CourseService from '../services/CourseService';
+const courseService = CourseService.getInstance();
 
 export default class CourseEditor extends React.Component {
     constructor(props) {
@@ -11,16 +13,38 @@ export default class CourseEditor extends React.Component {
         const pathName = window.location.pathname;
         const paths = pathName.split("/");
         const courseId = paths[2];
-        this.courses = props.courses;
-        this.course = this.courses.find(course => course.id == courseId);
+        //this.courses = props.courses;
+        //this.course = this.courses.find(course => course.id == courseId);
         this.state = {
             courseId: courseId,
-            course: this.course,
-            selectedModule: this.course.modules[0],
-            selectedLesson: this.course.modules[0].lessons[0],
-            selectedTopic : this.course.modules[0].lessons[0].topics[0]
+            course: {
+                modules: []
+            },
+            selectedModule: {
+                lessons: []
+            },
+            selectedLesson: {
+                topics: []
+            },
+            selectedTopic : {
+                widgets: []
+            }
         };
     }
+
+    componentDidMount = () => {
+        courseService.findAllCourses().then(response => {
+            const currCourses = response;
+            const currCourse = currCourses.find(course => course.id == this.state.courseId);
+            this.setState({
+                courses: currCourses,
+                course: currCourse,
+                selectedModule: currCourse.modules[0],
+                selectedLesson: currCourse.modules[0].lessons[0],
+                selectedTopic : currCourse.modules[0].lessons[0].topics[0]
+            });
+        })
+    };
 
     selectModule = (module) => {
         this.setState({
@@ -34,14 +58,12 @@ export default class CourseEditor extends React.Component {
         this.setState({
             selectedLesson: this.state.selectedModule.lessons.find(l => l.title == lesson.title)
         });
-        console.log("selectLesson");
     };
 
     selectTopic = topic => {
         this.setState({
             selectedTopic: this.state.selectedLesson.topics.find(t => t.title == topic.title)
         });
-        console.log("selectTopic");
     };
 
     createModule = () => {
@@ -55,7 +77,6 @@ export default class CourseEditor extends React.Component {
             //prepends this.state.module. Arguments could be reversed in order to append to end.
             modules: [...this.state.modules, this.state.module]
         });
-        console.log(this.state.modules)
     };
 
     editModule = (module) => {
@@ -76,7 +97,7 @@ export default class CourseEditor extends React.Component {
         return (
             <div>
 
-                <h2>{this.course.title}</h2>
+                <h2>{this.state.course.title}</h2>
                 <div className="row">
                     <div className="col-4 left">
                         <ModuleList deleteModule={this.deleteModule}
@@ -84,7 +105,7 @@ export default class CourseEditor extends React.Component {
                                     selectModule={this.selectModule}
                                     editModule={this.editModule}
                                     selectedModule={this.state.selectedModule}
-                                    modules={this.course.modules}/>
+                                    modules={this.state.course.modules}/>
                     </div>
 
                     <div className="col-8 right">
