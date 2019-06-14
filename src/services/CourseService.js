@@ -19,18 +19,19 @@ export default class CourseService {
         const getUrl = "http://localhost:8080/api/courses";
         return fetch(getUrl).then(response => {
             return response.json();
+
         });
     }
 
     findCourseById(id) {
-        const getUrl = "http://localhost:8080/api/courses" + id;
+        const getUrl = "http://localhost:8080/api/courses/" + id;
         return fetch(getUrl).then(response => {
             return response.json();
         });
     }
 
     updateCourse(id, course) {
-        const updateUrl = "http://localhost:8080/api/courses" + id;
+        const updateUrl = "http://localhost:8080/api/courses/" + id;
         return fetch(updateUrl, {
             method: 'put',
             body: JSON.stringify(course),
@@ -42,7 +43,7 @@ export default class CourseService {
 
 
     deleteCourse(id) {
-        const deleteUrl = "http://localhost:8080/api/courses" + id;
+        const deleteUrl = "http://localhost:8080/api/courses/" + id;
         return fetch(deleteUrl, {
             method: 'delete',
         }).then(response => {
@@ -51,7 +52,7 @@ export default class CourseService {
     }
 
     createCourse(course) {
-        const createUrl = "http://localhost:8080/api/courses";
+        const createUrl = "http://localhost:8080/api/courses/";
         return fetch(createUrl, {
             method: 'post',
             body: JSON.stringify(course),

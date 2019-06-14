@@ -1,13 +1,13 @@
 import React from "react";
 import CourseEditor from "./CourseEditor";
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import { createStore } from 'redux'
-import { Provider, connect } from 'react-redux'
-import CourseGrid from './CourseGrid'
+import { createStore } from 'redux';
+import { Provider, connect } from 'react-redux';
+import CourseGrid from './CourseGrid';
+import CourseTable from './CourseTable';
 import CourseListContainer from '../containers/CourseListContainer';
 import CourseService from '../services/CourseService';
 import WidgetService from "../services/WidgetService";
-import WidgetReducer from '../reducers/WidgetReducer';
 import reducer from '../reducers/index';
 
 const store = createStore(reducer);
@@ -25,13 +25,16 @@ export default class Whiteboard extends React.Component {
         super(props);
         this.state = {
             selectedCourse: courses[0],
-            courses: courses,
+            courses: [],
             courseInProgress: {
                 title: "",
                 author: ""
             }
         };
-        console.log(this.state.courses);
+        courseService.findAllCourses().then(data => {
+            console.log(data);
+            this.setState({courses: data})
+        });
     }
 
     selectCourse = course => {
@@ -107,7 +110,7 @@ export default class Whiteboard extends React.Component {
                         </Link>*/}
 
                         <Route path="/course-list"
-                               render={() => <CourseListContainer deleteCourse={this.deleteCourse}
+                               render={() => <CourseTable deleteCourse={this.deleteCourse}
                                                          selectCourse={this.selectCourse}
                                                          courses={this.state.courses}/>}/>
                         <Route path="/course-grid"

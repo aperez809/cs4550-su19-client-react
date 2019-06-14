@@ -11,8 +11,8 @@ export default class WidgetService {
         return this.myInstance;
     }
 
-    findAllWidgets(tid) {
-        const getUrl = "http://localhost:8080/api/topics/" + tid + "/widgets";
+    findAllWidgets() {
+        const getUrl = "http://localhost:8080/api/widgets/";
         return fetch(getUrl).then(response => {
             return response.json();
         });

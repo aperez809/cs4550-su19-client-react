@@ -40,6 +40,7 @@ const dispatchToPropertyMapper = dispatch => ({
                     type: "FIND_ALL_WIDGETS",
                     widgets: widgets
                 })),
+
     deleteWidget: widgetId => {
         widgetService
             .deleteWidget(widgetId)

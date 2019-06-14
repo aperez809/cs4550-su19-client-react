@@ -1,6 +1,4 @@
 import React from 'react'
-import {createStore} from 'redux'
-import {Provider, connect} from 'react-redux'
 import WidgetService from '../services/WidgetService'
 
 const service = WidgetService.getInstance();

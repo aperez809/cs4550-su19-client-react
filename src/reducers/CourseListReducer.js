@@ -1,6 +1,4 @@
 import React from 'react';
-import {createStore} from 'redux';
-import {Provider, connect} from 'react-redux';
 import CourseService from '../services/CourseService';
 
 const service = CourseService.getInstance();

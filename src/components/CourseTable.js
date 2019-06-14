@@ -7,7 +7,6 @@ import CourseListItem from './CourseRow';
 class CourseTable extends React.Component {
     constructor(props) {
         super(props);
-        this.props.findAllCourses();
     }
 
     render() {
