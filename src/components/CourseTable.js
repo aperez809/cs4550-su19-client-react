@@ -1,5 +1,5 @@
 import React from 'react';
-import CourseListItem from './CourseRow';
+import CourseRow from './CourseRow';
 
 
 
@@ -16,10 +16,10 @@ class CourseTable extends React.Component {
                 <div className="list-group">
                     {
                         this.props.courses.map((course) =>
-                            <CourseListItem deleteCourse={this.props.deleteCourse}
-                                            selectCourse={this.props.selectCourse}
-                                            course={course}
-                                            key={course.id}/>
+                            <CourseRow deleteCourse={this.props.deleteCourse}
+                                       selectCourse={this.props.selectCourse}
+                                       course={course}
+                                       key={course.id}/>
                         )
                     }
 

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 const CourseRow = ({course, selectCourse, deleteCourse}) =>
     <div className="list-group-item">
-        <Link onClick={() => selectCourse(course)}
+        <Link onClick={() => selectCourse(course.id)}
               to={`/course-editor/${course.id}`}>
             {course.title}
         </Link>

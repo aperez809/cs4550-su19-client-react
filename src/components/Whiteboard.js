@@ -31,19 +31,18 @@ export default class Whiteboard extends React.Component {
                 author: ""
             }
         };
-        courseService.findAllCourses().then(data => {
-            console.log(data);
-            this.setState({courses: data})
+        courseService.findAllCourses().then(response => {
+            this.setState({courses: response})
         });
     }
 
-    selectCourse = course => {
-        this.setState({selectedCourse: course});
+    selectCourse = id => {
+        this.setState({selectedCourse: this.state.courses.find(course => course.id == id)});
     };
 
     deleteCourse = id => {
-        this.setState({
-            courses: courseService.deleteCourse(id)
+        courseService.deleteCourse(id).then(response => {
+            this.setState({courses: response})
         });
     };
 
@@ -119,7 +118,8 @@ export default class Whiteboard extends React.Component {
                                                          courses={this.state.courses}/>}/>
                         <Route path="/course-editor/:courseId"
                                render={() => <CourseEditor selectCourse={this.selectCourse}
-                                                           courses={this.state.courses}/>}/>
+                                                           courses={this.state.courses}
+                                                            selectedCourse={this.state.selectedCourse}/>}/>
                         </Router>
 
                     </div>
