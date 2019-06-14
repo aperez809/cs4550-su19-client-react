@@ -16,21 +16,21 @@ export default class ModuleService {
 
 
     findAllModules() {
-        const getUrl = "http://localhost:8080/api/modules";
+        const getUrl = "https://limitless-citadel-58042.herokuapp.com/api/modules";
         return fetch(getUrl).then(response => {
             return response.json();
         });
     }
 
     findModuleById(id) {
-        const getUrl = "http://localhost:8080/api/modules" + id;
+        const getUrl = "https://limitless-citadel-58042.herokuapp.com/api/modules/" + id;
         return fetch(getUrl).then(response => {
             return response.json();
         });
     }
 
     updateModules(id, module) {
-        const updateUrl = "http://localhost:8080/api/modules" + id;
+        const updateUrl = "https://limitless-citadel-58042.herokuapp.com/api/modules/" + id;
         return fetch(updateUrl, {
             method: 'put',
             body: JSON.stringify(module),
@@ -42,7 +42,7 @@ export default class ModuleService {
 
 
     deleteModule(id) {
-        const deleteUrl = "http://localhost:8080/api/modules" + id;
+        const deleteUrl = "https://limitless-citadel-58042.herokuapp.com/api/modules/" + id;
         return fetch(deleteUrl, {
             method: 'delete',
         }).then(response => {
@@ -51,7 +51,7 @@ export default class ModuleService {
     }
 
     createModule(module) {
-        const createUrl = "http://localhost:8080/api/modules";
+        const createUrl = "https://limitless-citadel-58042.herokuapp.com/api/modules";
         return fetch(createUrl, {
             method: 'post',
             body: JSON.stringify(module),

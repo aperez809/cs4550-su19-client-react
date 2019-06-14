@@ -16,7 +16,7 @@ export default class CourseService {
 
 
     findAllCourses() {
-        const getUrl = "http://localhost:8080/api/courses";
+        const getUrl = "https://limitless-citadel-58042.herokuapp.com/api/courses";
         return fetch(getUrl).then(response => {
             return response.json();
 
@@ -24,14 +24,14 @@ export default class CourseService {
     }
 
     findCourseById(id) {
-        const getUrl = "http://localhost:8080/api/courses/" + id;
+        const getUrl = "https://limitless-citadel-58042.herokuapp.com/api/courses/" + id;
         return fetch(getUrl).then(response => {
             return response.json();
         });
     }
 
     updateCourse(id, course) {
-        const updateUrl = "http://localhost:8080/api/courses/" + id;
+        const updateUrl = "https://limitless-citadel-58042.herokuapp.com/api/courses/" + id;
         return fetch(updateUrl, {
             method: 'put',
             body: JSON.stringify(course),
@@ -43,7 +43,7 @@ export default class CourseService {
 
 
     deleteCourse(id) {
-        const deleteUrl = "http://localhost:8080/api/courses/" + id;
+        const deleteUrl = "https://limitless-citadel-58042.herokuapp.com/api/courses/" + id;
         return fetch(deleteUrl, {
             method: 'delete',
         }).then(response => {
@@ -52,7 +52,7 @@ export default class CourseService {
     }
 
     createCourse(course) {
-        const createUrl = "http://localhost:8080/api/courses/";
+        const createUrl = "https://limitless-citadel-58042.herokuapp.com/api/courses/";
         return fetch(createUrl, {
             method: 'post',
             body: JSON.stringify(course),
